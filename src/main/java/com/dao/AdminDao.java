@@ -6,4 +6,5 @@ package com.dao;
  * @Description
  */
 public interface AdminDao {
+
 }

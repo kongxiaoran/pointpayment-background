@@ -10,18 +10,18 @@ import java.util.Date;
  */
 public class Admin {
 
-    private long id;
+    private Long id;
     private String account;
     private String password;
     private Integer permisssion;
     private Date createtime;
     private Integer status;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,5 +63,17 @@ public class Admin {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id=" + id +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", permisssion=" + permisssion +
+                ", createtime=" + createtime +
+                ", status=" + status +
+                '}';
     }
 }

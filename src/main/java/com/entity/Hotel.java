@@ -1,12 +1,15 @@
 package com.entity;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * @Author: kxr
  * @Date: 2020/2/25
  * @Description
  */
 public class Hotel {
-    private long id;
+    private Long id;
     private String name;
     private String address;
     private Date createtime;
@@ -14,11 +17,11 @@ public class Hotel {
     private List<Comment> listcoment;
     private List<Menu> listmenu;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -68,5 +71,18 @@ public class Hotel {
 
     public void setListmenu(List<Menu> listmenu) {
         this.listmenu = listmenu;
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", createtime=" + createtime +
+                ", status=" + status +
+                ", listcoment=" + listcoment +
+                ", listmenu=" + listmenu +
+                '}';
     }
 }

@@ -9,28 +9,20 @@ import java.util.Date;
  */
 public class Cart {
 
-    private long id;
+    private Long id;
     private String dishes;
     private String password;
     private Integer permisssion;
-    private long orderid;
+    private Long orderid;
     private Date createtime;
     private Integer status;
     private Order order;
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,11 +50,11 @@ public class Cart {
         this.permisssion = permisssion;
     }
 
-    public long getOrderid() {
+    public Long getOrderid() {
         return orderid;
     }
 
-    public void setOrderid(long orderid) {
+    public void setOrderid(Long orderid) {
         this.orderid = orderid;
     }
 
@@ -80,5 +72,27 @@ public class Cart {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", dishes='" + dishes + '\'' +
+                ", password='" + password + '\'' +
+                ", permisssion=" + permisssion +
+                ", orderid=" + orderid +
+                ", createtime=" + createtime +
+                ", status=" + status +
+                ", order=" + order +
+                '}';
     }
 }

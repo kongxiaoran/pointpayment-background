@@ -1,5 +1,7 @@
 package com.entity;
 
+import java.util.Date;
+
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -14,7 +16,7 @@ public class Menu {
     private Date createtime;
     private Integer status;
     private Hotel hotelid;
-    private Type typeid;
+    private Type type;
 
     public long getId() {
         return id;
@@ -72,11 +74,34 @@ public class Menu {
         this.status = status;
     }
 
-    public Hotel getHotel() {
-        return hotel;
+    public Hotel getHotelid() {
+        return hotelid;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setHotelid(Hotel hotelid) {
+        this.hotelid = hotelid;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", dishes='" + dishes + '\'' +
+                ", price=" + price +
+                ", picture='" + picture + '\'' +
+                ", typeid=" + typeid +
+                ", createtime=" + createtime +
+                ", status=" + status +
+                ", hotelid=" + hotelid +
+                ", type=" + type +
+                '}';
     }
 }

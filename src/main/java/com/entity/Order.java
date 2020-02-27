@@ -1,13 +1,16 @@
 package com.entity;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * @Author: kxr
  * @Date: 2020/2/25
  * @Description
  */
 public class Order {
-    private long id;
-    private long cartid;
+    private Long id;
+    private Long cartid;
     private String wxaccount;
     private Integer tablenumber;
     private Double money;
@@ -15,19 +18,19 @@ public class Order {
     private Integer status;
     private List<Cart> listcart;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getCartid() {
+    public Long getCartid() {
         return cartid;
     }
 
-    public void setCartid(long cartid) {
+    public void setCartid(Long cartid) {
         this.cartid = cartid;
     }
 
@@ -77,5 +80,19 @@ public class Order {
 
     public void setListcart(List<Cart> listcart) {
         this.listcart = listcart;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", cartid=" + cartid +
+                ", wxaccount='" + wxaccount + '\'' +
+                ", tablenumber=" + tablenumber +
+                ", money=" + money +
+                ", createtime=" + createtime +
+                ", status=" + status +
+                ", listcart=" + listcart +
+                '}';
     }
 }

@@ -1,12 +1,14 @@
 package com.entity;
 
+import java.util.Date;
+
 /**
  * @Author: kxr
  * @Date: 2020/2/25
  * @Description
  */
 public class Comment {
-    private long id;
+    private Long id;
     private String wxaccount;
     private Integer hid;
     private String dishes;
@@ -16,19 +18,11 @@ public class Comment {
     private Integer status;
     private Hotel hotel;
 
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -86,5 +80,28 @@ public class Comment {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", wxaccount='" + wxaccount + '\'' +
+                ", hid=" + hid +
+                ", dishes='" + dishes + '\'' +
+                ", marks=" + marks +
+                ", comment='" + comment + '\'' +
+                ", createtime=" + createtime +
+                ", status=" + status +
+                ", hotel=" + hotel +
+                '}';
     }
 }

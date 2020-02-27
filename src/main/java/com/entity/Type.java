@@ -1,5 +1,8 @@
 package com.entity;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -51,5 +54,17 @@ public class Type {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Type{" +
+                "id=" + id +
+                ", typename='" + typename + '\'' +
+                ", quantity=" + quantity +
+                ", date=" + date +
+                ", status=" + status +
+                ", listmenu=" + listmenu +
+                '}';
     }
 }
