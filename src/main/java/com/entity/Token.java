@@ -4,7 +4,7 @@ public class Token{
     private String token;
     private String openid;
     private String session_key;
-    private timestamp createtime;
+    private Date createtime;
     private int status;
 
     public int getId() {
@@ -39,11 +39,11 @@ public class Token{
         this.session_key = session_key;
     }
 
-    public timestamp getCreatetime() {
+    public Date getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(timestamp createtime) {
+    public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
 
