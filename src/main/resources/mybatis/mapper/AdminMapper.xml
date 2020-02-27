@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kxr.dao.impl.SharedDaoImpl">
+<mapper namespace="com.dao.impl.AdminDaoImpl">
 
     <sql id="admin">admin</sql>
 
-    <insert id="insert" parameterType="Shared" keyProperty="id"  useGeneratedKeys="true">
+    <insert id="insert" parameterType="Admin" keyProperty="id"  useGeneratedKeys="true">
         INSERT INTO <include refid="shared"/> (userId,permission,url,shareUrl,shareUser,shareType,accessCode) values(#{userId},#{permission},#{url},#{shareUrl},#{shareUser},#{shareType},#{accessCode})
     </insert>
 
