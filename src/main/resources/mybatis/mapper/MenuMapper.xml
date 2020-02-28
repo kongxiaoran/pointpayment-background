@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.impl.TypeDaoImpl">
+
+    <sql id="menu">menu</sql>
+
+    <insert id="insert" parameterType="com.entity.Menu" keyProperty="id"  useGeneratedKeys="true">
+        INSERT INTO <include refid="menu"/> (dishes,price,picture,typeid,hid,status) values(#{dishes},#{price},#{picture},#{typeid},#{hid},#{status})
+    </insert>
+
+    <update id="update" parameterType="com.entity.QRcode" keyProperty="id"  useGeneratedKeys="true">
+        update <include refid="menu" /> s set s.status=1
+        <if test="dishes!=null || dishes!=''">,s.dishes=#{dishes}</if>
+        <if test="price!=null || price!=''">,s.price=#{price}</if>
+        <if test="picture!=null || picture!=''">,s.picture=#{picture}</if>
+        <if test="typeid!=null || typeid!=''">,s.typeid=#{typeid}</if>
+        <if test="hid!=null || hid!=''">,s.hid=#{hid}</if>
+        <if test="status!=null || status!=''">,s.status=#{status}</if>
+        where s.status!=9 and s.id=#{id}
+    </update>
+
+    <select id="getBy" parameterType="long" resultType="com.entity.Menu">
+        SELECT * FROM <include refid="menu"/> s WHERE s.status!=9
+        <if test="dishes!=null || dishes!=''">and s.dishes=#{dishes}</if>
+        <if test="price!=null || price!=''">and s.price=#{price}</if>
+        <if test="picture!=null || picture!=''">and s.picture=#{picture}</if>
+        <if test="typeid!=null || typeid!=''">and s.typeid=#{typeid}</if>
+        <if test="hid!=null || hid!=''">and s.hid=#{hid}</if>
+        <if test="createtime!=null || createtime!=''">and s.createtime=#{createtime}</if>
+        <if test="status!=null || status!=''">and s.status=#{status}</if>
+    </select>
+
+    <select id="getListBy" parameterType="long" resultType="com.entity.Menu">
+    </select>
+
+</mapper>

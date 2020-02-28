@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.impl.TokenDaoImpl">
-    <insert id="insert" parameterType="com.entity.Token">
-        insert into token(token,openid,session_key) values (#{token},#{openid},#{session_key})
+
+    <sql id="token">token</sql>
+
+    <insert id="insert" parameterType="com.entity.Token" keyProperty="id"  useGeneratedKeys="true">
+        insert into <include refid="token" />(token,openid,session_key,status) values (#{token},#{openid},#{session_key},#{status})
     </insert>
 
-    <select id="getBytoken" parameterType="String">
-        select from token where token=#{token}
+    <update id="update" parameterType="long" keyProperty="id" useGeneratedKeys="true">
+        update <include refid="token"/> s set s.status=1
+        <if test="token!=null || token!=''">,s.token=#{token}</if>
+        <if test="openid!=null || openid!=''">,s.openid=#{openid}</if>
+        <if test="session_key!=null || session_key!=''">,s.session_key=#{session_key}</if>
+        <if test="status!=null || status!=''">,s.status=#{status}</if>
+        where s.status!=9 and s.id=#{id}
+    </update>
+    <select id="getBy" parameterType="com.entity.Token">
+        select from <include refid="token"/> s where s.status!=9
+        <if test="token!=null || token!=''">and s.token=#{token}</if>
+        <if test="openid!=null || openid!=''">and s.openid=#{openid}</if>
+        <if test="session_key!=null || session_key!=''">and s.session_key=#{session_key}</if>
+        <if test="createtime!=null || createtime!=''">and s.createtime=#{createtime}</if>
+        <if test="status!=null || status!=''">and s.status=#{status}</if>
     </select>
 
 </mapper>

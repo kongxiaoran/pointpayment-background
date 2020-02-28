@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.impl.TypeDaoImpl">
+
+    <sql id="type">type</sql>
+
+    <insert id="insert" parameterType="com.entity.Type" keyProperty="id"  useGeneratedKeys="true">
+        INSERT INTO <include refid="type"/> (typename,quantity,status) values(#{typename},#{quantity},#{status})
+    </insert>
+
+    <update id="update" parameterType="long" keyProperty="id"  useGeneratedKeys="true">
+        update <include refid="type" /> s set status=1
+         <if test="typename!=null || typename==''">,s.typename=#{typename}</if>
+         <if test="quantity!=null || quantity==''">,s.quantity=#{quantity}</if>
+         <if test="status != null">,s.status = #{status}</if>
+         WHERE status != 9 and s.id=#{id}
+    </update>
+
+    <select id="getBy" parameterType="com.entity.Type" resultType="com.entity.Type">
+        SELECT * FROM <include refid="type"/> s WHERE s.status!=9
+        <if test="typename!=null || typename!=''">and s.typename=#{typename}</if>
+        <if test="quantity!=null || quantity!=''">and s.quantity=#{quantity}</if>
+        <if test="createtime!=null || createtime!=''">and s.createtime=#{createtime}</if>
+        <if test="status!=null || status!=''">and s.status=#{status}</if>
+    </select>
+
+    <select id="getListBy" parameterType="long" resultType="com.entity.Type">
+        SELECT * FROM <include refid="type"/> s WHERE s.status != 9
+    </select>
+
+</mapper>
