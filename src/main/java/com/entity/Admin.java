@@ -2,7 +2,8 @@ package com.entity;
 
 
 import java.util.Date;
-
+import java.util.HashMap;
+import java.util.Map;
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -63,6 +64,13 @@ public class Admin {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Map<String,Object> getMap(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("account",account);
+        map.put("password",password);
+        return map;
     }
 
     @Override

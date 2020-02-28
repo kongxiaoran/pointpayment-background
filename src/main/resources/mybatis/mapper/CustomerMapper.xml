@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.impl.CustomerDaoImpl">
+
+    <sql id="customer">customer</sql>
+    <insert id="insert" parameterType="Customer" keyProperty="id"  useGeneratedKeys="true">
+        INSERT INTO <include refid="customer"/> (wxaccount,createtime,status) values(#{wxaccount},#{createtime},#{status})
+    </insert>
+
+    <select id="getByAll" parameterType="Customer" resultType="Customer">
+        SELECT * FROM <include refid="customer"/> s WHERE s.status != 9
+        <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
+        <if test="createtime != null|| createtime=''">and s.createtime = #{createtime}</if>
+        <if test="status != null|| status=''">and s.status = #{status}</if>
+    </select>
+
+    <select id="listBy" parameterType="long" resultType="Customer">
+        SELECT * FROM <include refid="customer"/> s WHERE s.status != 9
+        and s.id = #{id}
+    </select>
+
+
+
+    <update id="update" parameterType="Customer">
+        UPDATE <include refid="customer"/> s SET status = 1
+        <if test="wxaccount != null|| wxaccount=''">, s.wxaccount = #{wxaccount}</if>
+        <if test="createtime != null|| createtime=''">,s.createtime = #{createtime}</if>
+        <if test="status != null|| status=''">,s.status = #{status}</if>
+        WHERE status != 9
+        <if test="id !=null|| id=''">and s.id = #{id}</if>
+    </update>
+</mapper>

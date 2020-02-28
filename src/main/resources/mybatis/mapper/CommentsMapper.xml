@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.impl.CommentDaoImpl">
+
+    <sql id="comment">comment</sql>
+    <insert id="insert" parameterType="Comment" keyProperty="id"  useGeneratedKeys="true">
+        INSERT INTO <include refid="comment"/> (wxaccount,hid,dishes,marks,comment,createtime,status) values(#{wxaccount},#{hid},#{dishes},#{marks},#{comment},#{createtime},#{status})
+    </insert>
+
+    <select id="getByAll" parameterType="Comment" resultType="Comment">
+        SELECT * FROM <include refid="comment"/> s WHERE s.status != 9
+        <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
+        <if test="hid != null|| hid=''">and s.hid = #{hid}</if>
+        <if test="dishes != null|| dishes=''">and s.dishes = #{dishes}</if>
+        <if test="marks != null|| marks=''">and s.marks = #{marks}</if>
+        <if test="comment != null|| comment=''">and s.comment = #{comment}</if>
+        <if test="createtime != null|| createtime=''">and s.createtime = #{createtime}</if>
+        <if test="status != null|| status=''">and s.status = #{status}</if>
+    </select>
+
+    <select id="listBy" parameterType="long" resultType="Comment">
+        SELECT * FROM <include refid="comment"/> s WHERE s.status != 9
+        and s.id = #{id}
+    </select>
+
+
+
+    <update id="update" parameterType="Comment">
+        UPDATE <include refid="admin"/> s SET status = 1
+        <if test="wxaccount != null|| wxaccount=''">, s.wxaccount = #{wxaccount}</if>
+        <if test="hid != null|| hid=''">,s.hid = #{hid}</if>
+        <if test="dishes != null|| dishes=''">,s.dishes = #{dishes}</if>
+        <if test="marks != null|| marks=''">,s.marks = #{marks}</if>
+        <if test="comment != null|| comment=''">,s.comment = #{comment}</if>
+        <if test="createtime != null|| createtime=''">,s.createtime = #{createtime}</if>
+        <if test="status != null|| status=''">,s.status = #{status}</if>
+        WHERE status != 9
+        <if test="id !=null|| id=''">and s.id = #{id}</if>
+    </update>
+</mapper>

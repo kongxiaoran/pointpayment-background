@@ -16,7 +16,14 @@ public class AdminService {
     @Autowired
     AdminDao adminDao;
 
-    public void update(Admin shared){
-        adminDao.update(shared);
+    public int verify(Admin entity){
+
+        Admin ad = adminDao.getBy(entity.getMap());
+        if(ad!=null){
+            return ad.getPermisssion();
+        }
+        return 0;
     }
+
+
 }

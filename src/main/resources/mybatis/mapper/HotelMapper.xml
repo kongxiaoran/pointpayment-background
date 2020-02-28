@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.impl.HotelDaoImpl">
+
+    <sql id="hotel">hotel</sql>
+    <insert id="insert" parameterType="Hotel" keyProperty="id"  useGeneratedKeys="true">
+        INSERT INTO <include refid="hotel"/> (name,address,createtime,status) values(#{name},#{address},#{createtime},#{status})
+    </insert>
+
+    <select id="getByAll" parameterType="Hotel" resultType="Hotel">
+        SELECT * FROM <include refid="hotel"/> s WHERE s.status != 9
+        <if test="name != null|| name=''">and s.name = #{name}</if>
+        <if test="address != null|| address=''">and s.address = #{address}</if>
+        <if test="createtime != null|| createtime=''">and s.createtime = #{createtime}</if>
+        <if test="status != null|| status=''">and s.status = #{status}</if>
+    </select>
+
+    <select id="listBy" parameterType="long" resultType="Hotel">
+        SELECT * FROM <include refid="hotel"/> s WHERE s.status != 9
+        and s.id = #{id}
+    </select>
+
+
+
+    <update id="update" parameterType="Hotel">
+        UPDATE <include refid="hotel"/> s SET status = 1
+        <if test="name != null|| name=''">, s.name = #{name}</if>
+        <if test="address != null|| address=''">, s.address = #{address}</if>
+        <if test="createtime != null|| createtime=''">,s.createtime = #{createtime}</if>
+        <if test="status != null|| status=''">,s.status = #{status}</if>
+        WHERE status != 9
+        <if test="id !=null|| id=''">and s.id = #{id}</if>
+    </update>
+</mapper>
