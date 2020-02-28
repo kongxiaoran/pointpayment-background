@@ -9,6 +9,7 @@ import java.util.List;
  * @Description
  */
 public class Order {
+
     private Long id;
     private Long cartid;
     private String wxaccount;
