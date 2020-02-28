@@ -1,29 +1,47 @@
 package com.dao.impl;
 
 import com.dao.TypeDao;
+import com.entity.Type;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
-public class TypeDaoImpl implements TypeDao{
+@Repository(value = "typeDao")
+public class TypeDaoImpl extends SqlSessionDaoSupport implements TypeDao{
+    @Autowired
+    protected SqlSessionFactory sqlSessionFactory;
+
+    @Autowired
+    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        super.setSqlSessionFactory(sqlSessionFactory);
+    }
+
+    public SqlSession getSqlSession() {
+        return super.getSqlSession();
+    }
+
     @Override
-    public long insert(com.entity.Type entity) {
+    public long insert(Type entity) {
         return 0;
     }
 
     @Override
-    public long update(com.entity.Type entity) {
-        return 0;
+    public long update(Type entity) {
+        return this.getSqlSession().update("com.dao.impl.TypeDaoImpl.update",entity);
     }
 
     @Override
-    public com.entity.Type getBy(Map<String, Object> map) {
-        return null;
+    public Type getBy(Map<String, Object> map) {
+        return this.getSqlSession().selectOne("com.dao.impl.TypeDaoImpl.getBy",map);
     }
 
     @Override
-    public List<com.entity.Type> getListBy(Map<String, Object> map) {
-        return null;
+    public List<Type> getListBy(Map<String, Object> map) {
+        return this.getSqlSession().selectOne("com.dao.impl.TypeDaoImpl.getListBy", map);
     }
 }

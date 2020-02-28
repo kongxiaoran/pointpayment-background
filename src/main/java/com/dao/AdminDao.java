@@ -2,6 +2,8 @@ package com.dao;
 
 import com.entity.Admin;
 
+import java.util.Map;
+
 /**
  * @Author: kxr
  * @Date: 2020/2/27
@@ -13,7 +15,7 @@ public interface AdminDao {
 
     public long update(Admin entity);
 
-    public Admin getBy(Admin entity);
+    public Admin getBy(Map<String,Object> map);
 
 
 }
