@@ -3,19 +3,27 @@ package com.dao.impl;
 import com.dao.TokenDao;
 import com.entity.Token;
 
+import java.util.List;
+import java.util.Map;
+
 public class TokenDaoImpl implements TokenDao {
     @Override
-    public void insertall(Token token) {
-
-    }
-
-    @Override
-    public int selectstatus(String token) {
+    public long insert(Token token) {
         return 0;
     }
 
     @Override
-    public Token selectall(String token) {
+    public long update(Token entity) {
+        return 0;
+    }
+
+    @Override
+    public Token getBy(Map<String, Object> map) {
+        return null;
+    }
+
+    @Override
+    public List<Token> getListBy(Map<String, Object> map) {
         return null;
     }
 }

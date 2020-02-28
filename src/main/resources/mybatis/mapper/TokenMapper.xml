@@ -5,11 +5,7 @@
         insert into token(token,openid,session_key) values (#{token},#{openid},#{session_key})
     </insert>
 
-    <select id="selectstatus" parameterType="String">
-        select status from token where token=#{token}
-    </select>
-
-    <select id="selectall" parameterType="String">
+    <select id="getBytoken" parameterType="String">
         select from token where token=#{token}
     </select>
 
