@@ -7,26 +7,13 @@
         INSERT INTO <include refid="customer"/> (wxaccount,createtime,status) values(#{wxaccount},#{createtime},#{status})
     </insert>
 
-    <select id="getByAll" parameterType="Customer" resultType="Customer">
+    <select id="getBy" parameterType="Customer" resultType="Customer">
+        SELECT * FROM <include refid="customer"/> s WHERE s.status != 9
+        <if test="id != null|| id=''">and s.id = #{id}</if>
+        <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
+    </select>
+
+    <select id="getListBy" parameterType="Customer" resultType="Customer">
         SELECT * FROM <include refid="customer"/> s WHERE s.status != 9
         <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
-        <if test="createtime != null|| createtime=''">and s.createtime = #{createtime}</if>
-        <if test="status != null|| status=''">and s.status = #{status}</if>
     </select>
-
-    <select id="listBy" parameterType="long" resultType="Customer">
-        SELECT * FROM <include refid="customer"/> s WHERE s.status != 9
-        and s.id = #{id}
-    </select>
-
-
-
-    <update id="update" parameterType="Customer">
-        UPDATE <include refid="customer"/> s SET status = 1
-        <if test="wxaccount != null|| wxaccount=''">, s.wxaccount = #{wxaccount}</if>
-        <if test="createtime != null|| createtime=''">,s.createtime = #{createtime}</if>
-        <if test="status != null|| status=''">,s.status = #{status}</if>
-        WHERE status != 9
-        <if test="id !=null|| id=''">and s.id = #{id}</if>
-    </update>
-</mapper>

@@ -3,24 +3,28 @@
 <mapper namespace="com.dao.impl.CommentDaoImpl">
 
     <sql id="comment">comment</sql>
+
     <insert id="insert" parameterType="Comment" keyProperty="id"  useGeneratedKeys="true">
-        INSERT INTO <include refid="comment"/> (wxaccount,hid,dishes,marks,comment,createtime,status) values(#{wxaccount},#{hid},#{dishes},#{marks},#{comment},#{createtime},#{status})
+        INSERT INTO <include refid="comment"/> (wxaccount,hid,dishes,marks,comment,status) values(#{wxaccount},#{hid},#{dishes},#{marks},#{comment},#{status})
     </insert>
 
-    <select id="getByAll" parameterType="Comment" resultType="Comment">
+    <select id="getBy" parameterType="Comment" resultType="Comment">
         SELECT * FROM <include refid="comment"/> s WHERE s.status != 9
-        <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
+        <if test="id != null|| id=''">and s.id = #{id}</if>
         <if test="hid != null|| hid=''">and s.hid = #{hid}</if>
+        <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
         <if test="dishes != null|| dishes=''">and s.dishes = #{dishes}</if>
         <if test="marks != null|| marks=''">and s.marks = #{marks}</if>
         <if test="comment != null|| comment=''">and s.comment = #{comment}</if>
-        <if test="createtime != null|| createtime=''">and s.createtime = #{createtime}</if>
-        <if test="status != null|| status=''">and s.status = #{status}</if>
     </select>
 
-    <select id="listBy" parameterType="long" resultType="Comment">
+    <select id="getListBy" parameterType="Comment" resultType="Comment">
         SELECT * FROM <include refid="comment"/> s WHERE s.status != 9
-        and s.id = #{id}
+        <if test="hid != null|| hid=''">and s.hid = #{hid}</if>
+        <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
+        <if test="dishes != null|| dishes=''">and s.dishes = #{dishes}</if>
+        <if test="marks != null|| marks=''">and s.marks = #{marks}</if>
+        <if test="comment != null|| comment=''">and s.comment = #{comment}</if>
     </select>
 
 
@@ -34,7 +38,6 @@
         <if test="comment != null|| comment=''">,s.comment = #{comment}</if>
         <if test="createtime != null|| createtime=''">,s.createtime = #{createtime}</if>
         <if test="status != null|| status=''">,s.status = #{status}</if>
-        WHERE status != 9
-        <if test="id !=null|| id=''">and s.id = #{id}</if>
+        WHERE status != 9 and s.id = #{id}
     </update>
 </mapper>

@@ -1,5 +1,8 @@
 package com.controller;
 
+import com.entity.Hotel;
+import com.service.HotelService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -14,6 +17,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/hotel")
 public class HotelController {
 
+    @Autowired
+    HotelService hotelService;
+
     @RequestMapping(value = "/info",method = RequestMethod.POST)
-    public
+    public Hotel getInfo(long id){
+        return hotelService.getInfo(id);
+    }
+
 }
