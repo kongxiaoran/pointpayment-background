@@ -9,7 +9,7 @@
     </insert>
 
     <select id="getBy" parameterType="Cart" resultType="Cart">
-        SELECT * FROM <include refid="cart"/> s WHERE s.status != 9
+        SELECT id,mid,dishes,price,quantity,orderid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="cart"/> s WHERE s.status != 9
         <if test="id != null|| id=''">and s.id = #{id}</if>
         <if test="mid != null|| mid=''">and s.mid = #{mid}</if>
         <if test="dishes != null|| dishes=''">and s.dishes = #{dishes}</if>
@@ -19,7 +19,7 @@
     </select>
 
     <select id="getListBy" parameterType="Cart" resultType="Cart">
-        SELECT * FROM <include refid="cart"/> s WHERE s.status != 9
+        SELECT id,mid,dishes,price,quantity,orderid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="cart"/> s WHERE s.status != 9
         <if test="dishes != null|| dishes=''">and s.dishes = #{dishes}</if>
         <if test="price != null|| price=''">and s.price = #{price}</if>
         <if test="quantity != null|| quantity=''">and s.quantity = #{quantity}</if>

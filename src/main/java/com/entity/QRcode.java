@@ -1,7 +1,5 @@
 package com.entity;
 
-import java.util.Date;
-
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -10,7 +8,7 @@ import java.util.Date;
 public class QRcode {
     private Long id;
     private Integer tablenumber;
-    private Date createtime;
+    private String createtime;
     private Integer status;
 
     public Long getId() {
@@ -29,11 +27,11 @@ public class QRcode {
         this.tablenumber = tablenumber;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 
@@ -43,15 +41,5 @@ public class QRcode {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "QRcode{" +
-                "id=" + id +
-                ", tablenumber=" + tablenumber +
-                ", createtime=" + createtime +
-                ", status=" + status +
-                '}';
     }
 }

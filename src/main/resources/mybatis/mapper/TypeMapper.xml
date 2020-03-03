@@ -16,15 +16,12 @@
          WHERE status != 9 and s.id=#{id}
     </update>
 
-    <select id="getBy" parameterType="com.entity.Type" resultType="com.entity.Type">
-        SELECT * FROM <include refid="type"/> s WHERE s.status!=9
-        <if test="typename!=null || typename!=''">and s.typename=#{typename}</if>
-        <if test="quantity!=null || quantity!=''">and s.quantity=#{quantity}</if>
-        <if test="createtime!=null || createtime!=''">and s.createtime=#{createtime}</if>
-        <if test="status!=null || status!=''">and s.status=#{status}</if>
+    <select id="getBy" parameterType="Type" resultType="Type">
+        SELECT * FROM <include refid="type"/> s WHERE s.status != 9
+        <if test="typename != null || typename!=''">and s.typename=#{typename}</if>
     </select>
 
-    <select id="getListBy" parameterType="long" resultType="com.entity.Type">
+    <select id="getList" parameterType="Type" resultType="Type">
         SELECT * FROM <include refid="type"/> s WHERE s.status != 9
     </select>
 

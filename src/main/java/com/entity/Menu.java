@@ -1,7 +1,5 @@
 package com.entity;
 
-import java.util.Date;
-
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -9,14 +7,13 @@ import java.util.Date;
  */
 public class Menu {
     private long id;
+    private long hid;
     private String dishes;
     private Double price;
     private String picture;
     private long typeid;
-    private Date createtime;
+    private String createtime;
     private Integer status;
-    private Hotel hotelid;
-    private Type type;
 
     public long getId() {
         return id;
@@ -24,6 +21,14 @@ public class Menu {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getHid() {
+        return hid;
+    }
+
+    public void setHid(long hid) {
+        this.hid = hid;
     }
 
     public String getDishes() {
@@ -58,11 +63,11 @@ public class Menu {
         this.typeid = typeid;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 
@@ -72,36 +77,5 @@ public class Menu {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Hotel getHotelid() {
-        return hotelid;
-    }
-
-    public void setHotelid(Hotel hotelid) {
-        this.hotelid = hotelid;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return "Menu{" +
-                "id=" + id +
-                ", dishes='" + dishes + '\'' +
-                ", price=" + price +
-                ", picture='" + picture + '\'' +
-                ", typeid=" + typeid +
-                ", createtime=" + createtime +
-                ", status=" + status +
-                ", hotelid=" + hotelid +
-                ", type=" + type +
-                '}';
     }
 }

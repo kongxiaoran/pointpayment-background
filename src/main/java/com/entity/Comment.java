@@ -1,7 +1,5 @@
 package com.entity;
 
-import java.util.Date;
-
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -14,9 +12,8 @@ public class Comment {
     private String dishes;
     private Float marks;
     private String comment;
-    private Date createtime;
+    private String createtime;
     private Integer status;
-    private Hotel hotel;
 
     public Long getId() {
         return id;
@@ -66,11 +63,11 @@ public class Comment {
         this.comment = comment;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 
@@ -80,28 +77,5 @@ public class Comment {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
-
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", wxaccount='" + wxaccount + '\'' +
-                ", hid=" + hid +
-                ", dishes='" + dishes + '\'' +
-                ", marks=" + marks +
-                ", comment='" + comment + '\'' +
-                ", createtime=" + createtime +
-                ", status=" + status +
-                ", hotel=" + hotel +
-                '}';
     }
 }

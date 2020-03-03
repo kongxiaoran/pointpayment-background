@@ -1,8 +1,5 @@
 package com.entity;
 
-import java.util.Date;
-import java.util.List;
-
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -15,9 +12,8 @@ public class Order {
     private String wxaccount;
     private Integer tablenumber;
     private Double money;
-    private Date createtime;
+    private String createtime;
     private Integer status;
-    private List<Cart> listcart;
 
     public Long getId() {
         return id;
@@ -59,11 +55,11 @@ public class Order {
         this.money = money;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 
@@ -73,27 +69,5 @@ public class Order {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public List<Cart> getListcart() {
-        return listcart;
-    }
-
-    public void setListcart(List<Cart> listcart) {
-        this.listcart = listcart;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", cartid=" + cartid +
-                ", wxaccount='" + wxaccount + '\'' +
-                ", tablenumber=" + tablenumber +
-                ", money=" + money +
-                ", createtime=" + createtime +
-                ", status=" + status +
-                ", listcart=" + listcart +
-                '}';
     }
 }

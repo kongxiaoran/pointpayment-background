@@ -1,8 +1,5 @@
 package com.entity;
 
-import java.util.Date;
-import java.util.List;
-
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -12,9 +9,8 @@ public class Type {
     private long id;
     private String typename;
     private Integer quantity;
-    private Date date;
+    private String createtime;
     private Integer status;
-    private List<Menu> listmenu;
 
     public long getId() {
         return id;
@@ -40,12 +36,12 @@ public class Type {
         this.quantity = quantity;
     }
 
-    public Date getDate() {
-        return date;
+    public String getCreatetime() {
+        return createtime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreatetime(String createtime) {
+        this.createtime = createtime;
     }
 
     public Integer getStatus() {
@@ -54,17 +50,5 @@ public class Type {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Type{" +
-                "id=" + id +
-                ", typename='" + typename + '\'' +
-                ", quantity=" + quantity +
-                ", date=" + date +
-                ", status=" + status +
-                ", listmenu=" + listmenu +
-                '}';
     }
 }

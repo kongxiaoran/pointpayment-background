@@ -1,14 +1,12 @@
 package com.entity;
 
-import java.util.Date;
-
 public class Token{
 
     private int id;
     private String token;
     private String openid;
     private String session_key;
-    private Date createtime;
+    private String createtime;
     private int status;
 
     public int getId() {
@@ -43,11 +41,11 @@ public class Token{
         this.session_key = session_key;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 
@@ -57,17 +55,5 @@ public class Token{
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Token{" +
-                "id=" + id +
-                ", token='" + token + '\'' +
-                ", openid='" + openid + '\'' +
-                ", session_key='" + session_key + '\'' +
-                ", createtime=" + createtime +
-                ", status=" + status +
-                '}';
     }
 }

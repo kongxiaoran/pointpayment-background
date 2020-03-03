@@ -1,9 +1,6 @@
 package com.entity;
 
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -15,7 +12,7 @@ public class Admin {
     private String account;
     private String password;
     private Integer permisssion;
-    private Date createtime;
+    private String createtime;
     private Integer status;
 
     public Long getId() {
@@ -50,11 +47,11 @@ public class Admin {
         this.permisssion = permisssion;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 
@@ -64,24 +61,5 @@ public class Admin {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Map<String,Object> getMap(){
-        Map<String,Object> map = new HashMap<>();
-        map.put("account",account);
-        map.put("password",password);
-        return map;
-    }
-
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "id=" + id +
-                ", account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                ", permisssion=" + permisssion +
-                ", createtime=" + createtime +
-                ", status=" + status +
-                '}';
     }
 }

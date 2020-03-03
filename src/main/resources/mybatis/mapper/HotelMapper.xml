@@ -8,12 +8,10 @@
         INSERT INTO <include refid="hotel"/> (name,address,createtime,status) values(#{name},#{address},#{createtime},#{status})
     </insert>
 
-    <select id="getBy" parameterType="Hotel" resultType="Hotel">
-        SELECT * FROM <include refid="hotel"/> s WHERE s.status != 9
+    <select id="getBy" parameterType="java.util.HashMap" resultType="Hotel">
+        SELECT id,name,address,phone,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="hotel"/> s WHERE s.status != 9
         <if test="id != null|| id=''">and s.id = #{id}</if>
     </select>
-
-
 
     <update id="update" parameterType="Hotel">
         UPDATE <include refid="hotel"/> s SET status = 1

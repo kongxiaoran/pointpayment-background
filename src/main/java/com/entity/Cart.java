@@ -1,7 +1,5 @@
 package com.entity;
 
-import java.util.Date;
-
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -14,9 +12,7 @@ public class Cart {
     private String password;
     private Integer permisssion;
     private Long orderid;
-    private Date createtime;
-    private Integer status;
-    private Order order;
+    private String createtime;
 
     public Long getId() {
         return id;
@@ -58,41 +54,11 @@ public class Cart {
         this.orderid = orderid;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    @Override
-    public String toString() {
-        return "Cart{" +
-                "id=" + id +
-                ", dishes='" + dishes + '\'' +
-                ", password='" + password + '\'' +
-                ", permisssion=" + permisssion +
-                ", orderid=" + orderid +
-                ", createtime=" + createtime +
-                ", status=" + status +
-                ", order=" + order +
-                '}';
     }
 }

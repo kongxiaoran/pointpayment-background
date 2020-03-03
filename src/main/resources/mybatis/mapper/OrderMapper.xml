@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.impl.TypeDaoImpl">
+<mapper namespace="com.dao.impl.OrderDaoImpl">
 
     <sql id="order">order</sql>
 
@@ -18,14 +18,14 @@
     </update>
 
     <select id="getBy" parameterType="long" resultType="com.entity.QRcode">
-        SELECT * FROM <include refid="order"/> s WHERE s.status!=9
+        SELECT id,wxaccount,tablenumber,money,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="order"/> s WHERE s.status!=9
         <if test="tablenumber!=null || tablenumber!=''">and s.tablenumber=#{tablenumber}</if>
         <if test="createtime!=null || createtime!=''">and s.createtime=#{createtime}</if>
         <if test="status!=null || status!=''">and s.status=#{status}</if>
     </select>
 
     <select id="getListBy" parameterType="long" resultType="com.entity.QRcode">
-        SELECT * FROM <include refid="order"/> s WHERE s.status!=9
+        SELECT id,wxaccount,tablenumber,money,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="order"/> s WHERE s.status!=9
         <if test="tablenumber!=null || tablenumber==''">and s.tablenumber=#{tablenumber}</if>
         <if test="createtime!=null || createtime==''">and s.createtime=#{createtime}</if>
         <if test="status!=null || status==''">and s.status=#{status}</if>

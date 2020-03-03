@@ -1,8 +1,5 @@
 package com.entity;
 
-import java.util.Date;
-import java.util.List;
-
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -12,10 +9,8 @@ public class Hotel {
     private Long id;
     private String name;
     private String address;
-    private Date createtime;
+    private String createtime;
     private Integer status;
-    private List<Comment> listcoment;
-    private List<Menu> listmenu;
 
     public Long getId() {
         return id;
@@ -41,11 +36,11 @@ public class Hotel {
         this.address = address;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 
@@ -55,34 +50,5 @@ public class Hotel {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public List<Comment> getListcoment() {
-        return listcoment;
-    }
-
-    public void setListcoment(List<Comment> listcoment) {
-        this.listcoment = listcoment;
-    }
-
-    public List<Menu> getListmenu() {
-        return listmenu;
-    }
-
-    public void setListmenu(List<Menu> listmenu) {
-        this.listmenu = listmenu;
-    }
-
-    @Override
-    public String toString() {
-        return "Hotel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", createtime=" + createtime +
-                ", status=" + status +
-                ", listcoment=" + listcoment +
-                ", listmenu=" + listmenu +
-                '}';
     }
 }

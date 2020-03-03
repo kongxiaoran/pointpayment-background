@@ -17,3 +17,4 @@
         SELECT * FROM <include refid="customer"/> s WHERE s.status != 9
         <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
     </select>
+</mapper>
