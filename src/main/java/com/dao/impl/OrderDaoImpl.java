@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository(value = "orderDao")
 public class OrderDaoImpl extends SqlSessionDaoSupport implements OrderDao{
@@ -36,12 +35,12 @@ public class OrderDaoImpl extends SqlSessionDaoSupport implements OrderDao{
     }
 
     @Override
-    public Order getBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.OrderDaoImpl.getBy",map);
+    public Order getBy(Order entity) {
+        return this.getSqlSession().selectOne("com.dao.impl.OrderDaoImpl.getBy",entity);
     }
 
     @Override
-    public List<Order> getListBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.OrderDaoImpl.getListBy", map);
+    public List<Order> getListBy(Order entity) {
+        return this.getSqlSession().selectList("com.dao.impl.OrderDaoImpl.getListBy", entity);
     }
 }

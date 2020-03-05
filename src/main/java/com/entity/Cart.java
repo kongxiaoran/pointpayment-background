@@ -7,19 +7,29 @@ package com.entity;
  */
 public class Cart {
 
-    private Long id;
+    private long id;
+    private long mid;
     private String dishes;
-    private String password;
-    private Integer permisssion;
+    private Double price;
+    private Integer quantity;
     private Long orderid;
     private String createtime;
+    private Integer status;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public long getMid() {
+        return mid;
+    }
+
+    public void setMid(long mid) {
+        this.mid = mid;
     }
 
     public String getDishes() {
@@ -30,20 +40,20 @@ public class Cart {
         this.dishes = dishes;
     }
 
-    public String getPassword() {
-        return password;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public Integer getPermisssion() {
-        return permisssion;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setPermisssion(Integer permisssion) {
-        this.permisssion = permisssion;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Long getOrderid() {
@@ -60,5 +70,13 @@ public class Cart {
 
     public void setCreatetime(String createtime) {
         this.createtime = createtime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

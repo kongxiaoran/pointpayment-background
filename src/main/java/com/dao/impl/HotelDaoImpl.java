@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository(value = "hotelDao")
-public abstract class HotelDaoImpl extends SqlSessionDaoSupport implements HotelDao{
+public class HotelDaoImpl extends SqlSessionDaoSupport implements HotelDao{
     @Autowired
     protected SqlSessionFactory sqlSessionFactory;
 

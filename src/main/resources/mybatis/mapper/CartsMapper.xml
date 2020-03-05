@@ -10,33 +10,35 @@
 
     <select id="getBy" parameterType="Cart" resultType="Cart">
         SELECT id,mid,dishes,price,quantity,orderid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="cart"/> s WHERE s.status != 9
-        <if test="id != null|| id=''">and s.id = #{id}</if>
-        <if test="mid != null|| mid=''">and s.mid = #{mid}</if>
-        <if test="dishes != null|| dishes=''">and s.dishes = #{dishes}</if>
-        <if test="price != null|| price=''">and s.price = #{price}</if>
-        <if test="quantity != null|| quantity=''">and s.quantity = #{quantity}</if>
-        <if test="orderid != null|| orderid=''">and s.orderid = #{orderid}</if>
+        <if test="id != null  and id=''"> and s.id = #{id}</if>
+        <if test="mid != null  and mid=''"> and s.mid = #{mid}</if>
+        <if test="dishes != null  and dishes=''"> and s.dishes = #{dishes}</if>
+        <if test="price != null  and price=''"> and s.price = #{price}</if>
+        <if test="quantity != null  and quantity=''"> and s.quantity = #{quantity}</if>
+        <if test="orderid != null  and orderid=''"> and s.orderid = #{orderid}</if>
     </select>
 
     <select id="getListBy" parameterType="Cart" resultType="Cart">
-        SELECT id,mid,dishes,price,quantity,orderid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="cart"/> s WHERE s.status != 9
-        <if test="dishes != null|| dishes=''">and s.dishes = #{dishes}</if>
-        <if test="price != null|| price=''">and s.price = #{price}</if>
-        <if test="quantity != null|| quantity=''">and s.quantity = #{quantity}</if>
-        <if test="orderid != null|| orderid=''">and s.orderid = #{orderid}</if>
+        SELECT id,mid,dishes,price,quantity,orderid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="cart"/> ca WHERE ca.status != 9
+        <if test="orderid != null  and orderid=''"> and ca.orderid = #{orderid}</if>
+    </select>
+
+    <select id="getListByOrderId" parameterType="long" resultType="Cart">
+        SELECT id,mid,dishes,price,quantity FROM <include refid="cart"/> ca WHERE ca.status != 9
+        and ca.orderid = #{orderid}
     </select>
 
 
 
     <update id="update" parameterType="Cart">
         UPDATE <include refid="cart"/> s SET status=1
-        <if test="mid != null|| mid=''">,s.mid = #{mid}</if>
-        <if test="dishes != null|| dishes=''">,s.dishes = #{dishes}</if>
-        <if test="price != null|| price=''">,s.price = #{price}</if>
-        <if test="quantity != null|| quantity=''">,s.quantity = #{quantity}</if>
-        <!--<if test="orderid != null|| orderid=''">,s.orderid = #{orderid}</if>-->
-        <if test="status != null|| status=''">,s.status = #{status}</if>
-        WHERE status != 9 and s.id = #{id}
+        <if test="mid != null and mid=''">,s.mid = #{mid}</if>
+        <if test="dishes != null and dishes=''">,s.dishes = #{dishes}</if>
+        <if test="price != null and price=''">,s.price = #{price}</if>
+        <if test="quantity != null and quantity=''">,s.quantity = #{quantity}</if>
+        <!--<if test="orderid != null and orderid=''">,s.orderid = #{orderid}</if>-->
+        <if test="status != null and status=''">,s.status = #{status}</if>
+        WHERE status != 9  and s.id = #{id}
     </update>
 
 </mapper>

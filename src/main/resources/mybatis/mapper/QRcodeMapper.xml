@@ -10,23 +10,23 @@
 
     <update id="update" parameterType="com.entity.QRcode" keyProperty="id"  useGeneratedKeys="true">
         update <include refid="QRcode" /> s set s.status=1
-        <if test="tablenumber!=null || tablenumber!=''">,s.tablenumber=#{tablenumber}</if>
-        <if test="status!=null || status!=''">,s.status=#{status}</if>
+        <if test="tablenumber!=null  and tablenumber!=''">,s.tablenumber=#{tablenumber}</if>
+        <if test="status!=null  and status!=''">,s.status=#{status}</if>
         where s.status!=9 and s.id=#{id}
     </update>
 
     <select id="getBy" parameterType="long" resultType="com.entity.QRcode">
         SELECT * FROM <include refid="QRcode"/> s WHERE s.status!=9
-        <if test="tablenumber!=null || tablenumber!=''">and s.tablenumber=#{tablenumber}</if>
-        <if test="createtime!=null || createtime!=''">and s.createtime=#{createtime}</if>
-        <if test="status!=null || status!=''">and s.status=#{status}</if>
+        <if test="tablenumber!=null  and tablenumber!=''">and s.tablenumber=#{tablenumber}</if>
+        <if test="createtime!=null  and createtime!=''">and s.createtime=#{createtime}</if>
+        <if test="status!=null  and status!=''">and s.status=#{status}</if>
     </select>
 
     <select id="getListBy" parameterType="com.entity.QRcode" resultType="com.entity.QRcode">
         SELECT * FROM <include refid="QRcode"/> s WHERE s.status!=9
-        <if test="tablenumber!=null || tablenumber!=''">and s.tablenumber=#{tablenumber}</if>
-        <if test="createtime!=null || createtime!=''">and s.createtime=#{createtime}</if>
-        <if test="status!=null || status!=''">and s.status=#{status}</if>
+        <if test="tablenumber!=null  and tablenumber!=''">and s.tablenumber=#{tablenumber}</if>
+        <if test="createtime!=null  and createtime!=''">and s.createtime=#{createtime}</if>
+        <if test="status!=null  and status!=''">and s.status=#{status}</if>
     </select>
 
 </mapper>

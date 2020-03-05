@@ -1,5 +1,7 @@
 package com.entity;
 
+import java.util.List;
+
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -8,12 +10,21 @@ package com.entity;
 public class Order {
 
     private Long id;
-    private Long cartid;
     private String wxaccount;
     private Integer tablenumber;
     private Double money;
     private String createtime;
     private Integer status;
+
+    private List<Cart> carts;
+
+    public List<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<Cart> carts) {
+        this.carts = carts;
+    }
 
     public Long getId() {
         return id;
@@ -21,14 +32,6 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getCartid() {
-        return cartid;
-    }
-
-    public void setCartid(Long cartid) {
-        this.cartid = cartid;
     }
 
     public String getWxaccount() {

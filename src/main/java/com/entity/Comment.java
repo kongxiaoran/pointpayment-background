@@ -1,5 +1,7 @@
 package com.entity;
 
+import java.util.List;
+
 /**
  * @Author: kxr
  * @Date: 2020/2/25
@@ -14,6 +16,16 @@ public class Comment {
     private String comment;
     private String createtime;
     private Integer status;
+
+    private List<String> pics;
+
+    public List<String> getPics() {
+        return pics;
+    }
+
+    public void setPics(List<String> pics) {
+        this.pics = pics;
+    }
 
     public Long getId() {
         return id;

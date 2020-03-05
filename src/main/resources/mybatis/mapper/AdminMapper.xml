@@ -9,19 +9,19 @@
 
     <select id="getBy" parameterType="Admin" resultType="Admin">
         SELECT id,account,password,permission FROM <include refid="admin"/> s WHERE s.status != 9
-        <if test="id != null|| id=''">and s.id = #{id}</if>
-        <if test="account != null|| account=''">and s.account = #{account}</if>
-        <if test="password != null|| password=''">and s.password = #{password}</if>
-        <if test="permission != null|| permission=''">and s.permission = #{permission}</if>
-        <if test="status != null|| status=''">and s.status = #{status}</if>
+        <if test="id != nulland id=''">and s.id = #{id}</if>
+        <if test="account != nulland account=''">and s.account = #{account}</if>
+        <if test="password != nulland password=''">and s.password = #{password}</if>
+        <if test="permission != nulland permission=''">and s.permission = #{permission}</if>
+        <if test="status != nulland status=''">and s.status = #{status}</if>
     </select>
 
 
     <update id="update" parameterType="Admin">
         UPDATE <include refid="admin"/> s SET status = 1
-        <if test="account != null|| account=''">,s.account = #{account}</if>
-        <if test="password != null|| password=''">,s.password = #{password}</if>
-        <if test="permission != null|| permission=''">,s.permission = #{permission}</if>
+        <if test="account != nulland account=''">,s.account = #{account}</if>
+        <if test="password != nulland password=''">,s.password = #{password}</if>
+        <if test="permission != nulland permission=''">,s.permission = #{permission}</if>
         WHERE status != 9 and s.id = #{id}
     </update>
 </mapper>

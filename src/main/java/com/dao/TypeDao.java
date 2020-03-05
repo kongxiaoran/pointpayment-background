@@ -3,7 +3,6 @@ package com.dao;
 import com.entity.Type;
 
 import java.util.List;
-import java.util.Map;
 
 public interface TypeDao {
 
@@ -11,8 +10,8 @@ public interface TypeDao {
 
     public long update(Type entity);
 
-    public Type getBy(Map<String,Object> map);
+    public Type getBy(Type type);
 
-    public List<Type> getListBy(Map<String,Object> map);
+    public List<Type> getList();
 
 }

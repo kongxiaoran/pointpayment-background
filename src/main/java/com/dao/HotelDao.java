@@ -11,8 +11,6 @@ public interface HotelDao {
 
     public long update(Hotel entity);
 
-    public Hotel getBy(Hotel entity);
-
     public Hotel getBy(Map<String,Object> map);
 
     public List<Hotel> getListBy(Map<String,Object> map);

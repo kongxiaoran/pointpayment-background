@@ -15,4 +15,7 @@ public interface CommentDao {
 
     public List<Comment> getListBy(Map<String,Object> map);
 
+    public List<Comment> list();
+
+    public List<String> getCommentPic(long commentId);
 }

@@ -7,16 +7,14 @@ import com.entity.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author: kxr
  * @Date: 2020/2/28
  * @Description
  */
-@Component(value = "adminService")
+@Component(value = "menuService")
 public class MenuService {
 
     @Autowired
@@ -25,15 +23,35 @@ public class MenuService {
     @Autowired
     TypeDao typeDao;
 
-    public List<Menu> getListByType(String type){
+    public List<Menu> getListBy(String typeName){
 
-        Map<String,Object> map = new HashMap<>();
-        map.put("typename",type);
-        Type tp = typeDao.getBy(map);
-        map.clear();
+        Type type = new Type();
+        type.setTypename(typeName);
+        Type tp = typeDao.getBy(type);
 
-        map.put("typeid",tp.getId());
-        List<Menu> menus = menuDao.getListBy(map);
+        Menu menu = new Menu();
+        menu.setTypeid(tp.getId());
+        List<Menu> menus = menuDao.getListByType(menu);
         return menus;
+    }
+
+    public Menu getById(long id) {
+        return menuDao.getById(id);
+    }
+
+    public int update(Menu menu) {
+        return menuDao.update(menu);
+    }
+
+    public long insert(Menu menu) {
+        return menuDao.insert(menu);
+    }
+
+    public boolean delete(long id) {
+        Menu menu = new Menu();
+        menu.setId(id);
+        menu.setStatus(9);
+        menuDao.update(menu);
+        return true;
     }
 }

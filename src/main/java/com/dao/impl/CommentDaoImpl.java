@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository(value = "commentDao")
-public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao{
+public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
     @Autowired
     protected SqlSessionFactory sqlSessionFactory;
 
@@ -32,16 +32,26 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao{
 
     @Override
     public long update(Comment entity) {
-        return this.getSqlSession().update("com.dao.impl.CommentDaoImpl.update",entity);
+        return this.getSqlSession().update("com.dao.impl.CommentDaoImpl.update", entity);
     }
 
     @Override
     public Comment getBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.CommentDaoImpl.getBy",map);
+        return this.getSqlSession().selectOne("com.dao.impl.CommentDaoImpl.getBy", map);
     }
 
     @Override
     public List<Comment> getListBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.CommentDaoImpl.getListBy",map);
+        return this.getSqlSession().selectList("com.dao.impl.CommentDaoImpl.getListBy", map);
+    }
+
+    @Override
+    public List<Comment> list() {
+        return this.getSqlSession().selectList("com.dao.impl.CommentDaoImpl.list");
+    }
+
+    @Override
+    public List<String> getCommentPic(long commentId) {
+        return this.getSqlSession().selectList("com.dao.impl.CommentDaoImpl.getCommentPic",commentId);
     }
 }

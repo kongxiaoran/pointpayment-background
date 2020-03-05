@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository(value = "typeDao")
 public class TypeDaoImpl extends SqlSessionDaoSupport implements TypeDao{
@@ -36,12 +35,12 @@ public class TypeDaoImpl extends SqlSessionDaoSupport implements TypeDao{
     }
 
     @Override
-    public Type getBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.TypeDaoImpl.getBy",map);
+    public Type getBy(Type type) {
+        return this.getSqlSession().selectOne("com.dao.impl.TypeDaoImpl.getBy",type);
     }
 
     @Override
-    public List<Type> getListBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.TypeDaoImpl.getListBy", map);
+    public List<Type> getList() {
+        return this.getSqlSession().selectList("com.dao.impl.TypeDaoImpl.getList");
     }
 }

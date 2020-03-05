@@ -21,7 +21,7 @@ public class HotelController {
     HotelService hotelService;
 
     @RequestMapping(value = "/info",method = RequestMethod.POST)
-    public Hotel getInfo(long id){
+    public Hotel getInfo(@RequestBody long id){
         return hotelService.getInfo(id);
     }
 

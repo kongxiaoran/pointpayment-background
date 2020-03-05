@@ -15,6 +15,25 @@ public class Menu {
     private String createtime;
     private Integer status;
 
+    private boolean active = false;
+    private Integer num =1;
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public long getId() {
         return id;
     }

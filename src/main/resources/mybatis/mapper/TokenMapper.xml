@@ -10,19 +10,19 @@
 
     <update id="update" parameterType="long" keyProperty="id" useGeneratedKeys="true">
         update <include refid="token"/> s set s.status=1
-        <if test="token!=null || token!=''">,s.token=#{token}</if>
-        <if test="openid!=null || openid!=''">,s.openid=#{openid}</if>
-        <if test="session_key!=null || session_key!=''">,s.session_key=#{session_key}</if>
-        <if test="status!=null || status!=''">,s.status=#{status}</if>
+        <if test="token!=null  and token!=''">,s.token=#{token}</if>
+        <if test="openid!=null  and openid!=''">,s.openid=#{openid}</if>
+        <if test="session_key!=null  and session_key!=''">,s.session_key=#{session_key}</if>
+        <if test="status!=null  and status!=''">,s.status=#{status}</if>
         where s.status!=9 and s.id=#{id}
     </update>
     <select id="getBy" parameterType="com.entity.Token">
         select from <include refid="token"/> s where s.status!=9
-        <if test="token!=null || token!=''">and s.token=#{token}</if>
-        <if test="openid!=null || openid!=''">and s.openid=#{openid}</if>
-        <if test="session_key!=null || session_key!=''">and s.session_key=#{session_key}</if>
-        <if test="createtime!=null || createtime!=''">and s.createtime=#{createtime}</if>
-        <if test="status!=null || status!=''">and s.status=#{status}</if>
+        <if test="token!=null  and token!=''">and s.token=#{token}</if>
+        <if test="openid!=null  and openid!=''">and s.openid=#{openid}</if>
+        <if test="session_key!=null  and session_key!=''">and s.session_key=#{session_key}</if>
+        <if test="createtime!=null  and createtime!=''">and s.createtime=#{createtime}</if>
+        <if test="status!=null  and status!=''">and s.status=#{status}</if>
     </select>
 
 </mapper>

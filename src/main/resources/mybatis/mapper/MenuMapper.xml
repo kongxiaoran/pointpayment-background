@@ -10,22 +10,22 @@
 
     <update id="update" parameterType="Menu">
         update <include refid="menu" />  set status=1
-        <if test="dishes != null">,dishes=#{dishes}</if>
-        <if test="price != null">,price=#{price}</if>
-        <if test="picture != null">,picture=#{picture}</if>
-        <if test="typeid != null">,typeid=#{typeid}</if>
-        <if test="status != null">,status=#{status}</if>
+        <if test="dishes != null and dishes!=''">,dishes=#{dishes}</if>
+        <if test="price != null and price!=''">,price=#{price}</if>
+        <if test="picture != null and picture!=''">,picture=#{picture}</if>
+        <if test="typeid != null and typeid!=''">,typeid=#{typeid}</if>
+        <if test="status != null and status!=''">,status=#{status}</if>
         where status!=9 and id=#{id}
     </update>
 
     <select id="getBy" parameterType="Menu" resultType="Menu">
         SELECT id,dishes,price,picture,typeid,hid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="menu"/> s WHERE s.status!=9
-        <if test="dishes!=null || dishes!=''">and s.dishes=#{dishes}</if>
-        <if test="price!=null || price!=''">and s.price=#{price}</if>
-        <if test="picture!=null || picture!=''">and s.picture=#{picture}</if>
-        <if test="typeid!=null || typeid!=''">and s.typeid=#{typeid}</if>
-        <if test="hid!=null || hid!=''">and s.hid=#{hid}</if>
-        <if test="status!=null || status!=''">and s.status=#{status}</if>
+        <if test="dishes!=null and dishes!=''">and s.dishes=#{dishes}</if>
+        <if test="price!=null and price!=''">and s.price=#{price}</if>
+        <if test="picture!=null and picture!=''">and s.picture=#{picture}</if>
+        <if test="typeid!=null and typeid!=''">and s.typeid=#{typeid}</if>
+        <if test="hid!=null and hid!=''">and s.hid=#{hid}</if>
+        <if test="status!=null and status!=''">and s.status=#{status}</if>
     </select>
 
     <select id="getById" parameterType="long" resultType="Menu">
@@ -36,7 +36,7 @@
 
     <select id="getListByType" parameterType="Menu" resultType="Menu">
         SELECT id,dishes,price,picture,typeid,hid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="menu"/> s WHERE s.status!=9
-        <if test="typeid!=null || typeid!=''">and s.typeid=#{typeid}</if>
+        <if test="typeid!=null and typeid!=''">and s.typeid=#{typeid}</if>
     </select>
 
 </mapper>

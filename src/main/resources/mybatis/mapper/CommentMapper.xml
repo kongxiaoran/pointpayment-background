@@ -3,42 +3,54 @@
 <mapper namespace="com.dao.impl.CommentDaoImpl">
 
     <sql id="comment">comment</sql>
+    <sql id="comment_pic">comment_pic</sql>
+
 
     <insert id="insert" parameterType="Comment" keyProperty="id"  useGeneratedKeys="true">
         INSERT INTO <include refid="comment"/> (wxaccount,hid,dishes,marks,comment,status) values(#{wxaccount},#{hid},#{dishes},#{marks},#{comment},#{status})
     </insert>
 
+    <insert id="insertPic" parameterType="CommentPic" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO <include refid="comment_pic"/> (commentid,picture) VALUES (#{commentid},#{picture})
+    </insert>
+
+
     <!--<select id="getBy" parameterType="Comment" resultType="Comment">-->
         <!--SELECT * FROM <include refid="comment"/> s WHERE s.status != 9-->
-        <!--<if test="id != null|| id=''">and s.id = #{id}</if>-->
-        <!--<if test="hid != null|| hid=''">and s.hid = #{hid}</if>-->
-        <!--<if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>-->
-        <!--<if test="dishes != null|| dishes=''">and s.dishes = #{dishes}</if>-->
-        <!--<if test="marks != null|| marks=''">and s.marks = #{marks}</if>-->
-        <!--<if test="comment != null|| comment=''">and s.comment = #{comment}</if>-->
+        <!--<if test="id != null and id=''"> and s.id = #{id}</if>-->
+        <!--<if test="hid != null and hid=''"> and s.hid = #{hid}</if>-->
+        <!--<if test="wxaccount != null and wxaccount=''"> and s.wxaccount = #{wxaccount}</if>-->
+        <!--<if test="dishes != null and dishes=''"> and s.dishes = #{dishes}</if>-->
+        <!--<if test="marks != null and marks=''"> and s.marks = #{marks}</if>-->
+        <!--<if test="comment != null and comment=''"> and s.comment = #{comment}</if>-->
     <!--</select>-->
 
     <!--<select id="getListBy" parameterType="Comment" resultType="Comment">-->
         <!--SELECT * FROM <include refid="comment"/> s WHERE s.status != 9-->
-        <!--<if test="hid != null|| hid=''">and s.hid = #{hid}</if>-->
-        <!--<if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>-->
-        <!--<if test="dishes != null|| dishes=''">and s.dishes = #{dishes}</if>-->
-        <!--<if test="marks != null|| marks=''">and s.marks = #{marks}</if>-->
-        <!--<if test="comment != null|| comment=''">and s.comment = #{comment}</if>-->
+        <!--<if test="hid != null and hid=''"> and s.hid = #{hid}</if>-->
+        <!--<if test="wxaccount != null and wxaccount=''"> and s.wxaccount = #{wxaccount}</if>-->
+        <!--<if test="dishes != null and dishes=''"> and s.dishes = #{dishes}</if>-->
+        <!--<if test="marks != null and marks=''"> and s.marks = #{marks}</if>-->
+        <!--<if test="comment != null and comment=''"> and s.comment = #{comment}</if>-->
     <!--</select>-->
 
     <select id="list" resultType="Comment">
         SELECT id,wxaccount,hid,dishes,marks,comment,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="comment"/> c WHERE c.status !=9
     </select>
 
+    <select id="getCommentPic" parameterType="long" resultType="String">
+        SELECT picture FROM <include refid="comment_pic"/> c WHERE c.status!=9  and c.commentid = #{commentId}
+    </select>
+
     <!--<update id="update" parameterType="Comment">-->
         <!--UPDATE <include refid="admin"/> s SET status = 1-->
-        <!--<if test="wxaccount != null|| wxaccount=''">, s.wxaccount = #{wxaccount}</if>-->
-        <!--<if test="hid != null|| hid=''">,s.hid = #{hid}</if>-->
-        <!--<if test="dishes != null|| dishes=''">,s.dishes = #{dishes}</if>-->
-        <!--<if test="marks != null|| marks=''">,s.marks = #{marks}</if>-->
-        <!--<if test="comment != null|| comment=''">,s.comment = #{comment}</if>-->
-        <!--<if test="status != null|| status=''">,s.status = #{status}</if>-->
-        <!--WHERE status != 9 and s.id = #{id}-->
+        <!--<if test="wxaccount != null and wxaccount=''">, s.wxaccount = #{wxaccount}</if>-->
+        <!--<if test="hid != null and hid=''">,s.hid = #{hid}</if>-->
+        <!--<if test="dishes != null and dishes=''">,s.dishes = #{dishes}</if>-->
+        <!--<if test="marks != null and marks=''">,s.marks = #{marks}</if>-->
+        <!--<if test="comment != null and comment=''">,s.comment = #{comment}</if>-->
+        <!--<if test="status != null and status=''">,s.status = #{status}</if>-->
+        <!--WHERE status != 9  and s.id = #{id}-->
     <!--</update>-->
+
 </mapper>

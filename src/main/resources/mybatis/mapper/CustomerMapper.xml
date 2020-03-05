@@ -9,12 +9,12 @@
 
     <select id="getBy" parameterType="Customer" resultType="Customer">
         SELECT * FROM <include refid="customer"/> s WHERE s.status != 9
-        <if test="id != null|| id=''">and s.id = #{id}</if>
-        <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
+        <if test="id != null and id=''"> and s.id = #{id}</if>
+        <if test="wxaccount != null and wxaccount=''"> and s.wxaccount = #{wxaccount}</if>
     </select>
 
     <select id="getListBy" parameterType="Customer" resultType="Customer">
         SELECT * FROM <include refid="customer"/> s WHERE s.status != 9
-        <if test="wxaccount != null|| wxaccount=''">and s.wxaccount = #{wxaccount}</if>
+        <if test="wxaccount != null and wxaccount=''"> and s.wxaccount = #{wxaccount}</if>
     </select>
 </mapper>

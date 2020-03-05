@@ -8,8 +8,6 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Map;
-
 /**
  * @Author: kxr
  * @Date: 2020/2/27
@@ -41,8 +39,8 @@ public class AdminDaoImpl extends SqlSessionDaoSupport implements AdminDao {
     }
 
     @Override
-    public Admin getBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.AdminDaoImpl.getBy",map);
+    public Admin getBy(Admin entity) {
+        return this.getSqlSession().selectOne("com.dao.impl.AdminDaoImpl.getBy",entity);
     }
 
 

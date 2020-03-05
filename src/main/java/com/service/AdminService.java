@@ -18,7 +18,7 @@ public class AdminService {
 
     public int verify(Admin entity){
 
-        Admin ad = adminDao.getBy(entity.getMap());
+        Admin ad = adminDao.getBy(entity);
         if(ad!=null){
             return ad.getPermisssion();
         }

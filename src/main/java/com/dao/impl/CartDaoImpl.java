@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -41,12 +40,17 @@ public class CartDaoImpl extends SqlSessionDaoSupport implements CartDao {
     }
 
     @Override
-    public Cart getBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.CartDaoImpl.getBy",map);
+    public Cart getBy(Cart entity) {
+        return this.getSqlSession().selectOne("com.dao.impl.CartDaoImpl.getBy",entity);
     }
 
     @Override
-    public List<Cart> getListBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.CartDaoImpl.getListBy",map);
+    public List<Cart> getListBy(Cart entity) {
+        return this.getSqlSession().selectList("com.dao.impl.CartDaoImpl.getListBy",entity);
+    }
+
+    @Override
+    public List<Cart> getListByOrderId(long orderid) {
+        return this.getSqlSession().selectList("com.dao.impl.CartDaoImpl.getListByOrderId",orderid);
     }
 }

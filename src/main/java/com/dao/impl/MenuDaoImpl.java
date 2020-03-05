@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository(value = "menuDao")
 public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao{
@@ -27,21 +26,26 @@ public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao{
 
     @Override
     public long insert(Menu entity) {
-        return 0;
+        return this.getSqlSession().insert("com.dao.impl.MenuDaoImpl.insert",entity);
     }
 
     @Override
-    public long update(Menu entity) {
+    public int update(Menu entity) {
         return this.getSqlSession().update("com.dao.impl.MenuDaoImpl.update",entity);
     }
 
     @Override
-    public Menu getBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.MenuDaoImpl.getBy",map);
+    public Menu getBy(Menu menu) {
+        return this.getSqlSession().selectOne("com.dao.impl.MenuDaoImpl.getBy",menu);
     }
 
     @Override
-    public List<Menu> getListBy(Map<String, Object> map) {
-        return this.getSqlSession().selectOne("com.dao.impl.MenuDaoImpl.getListBy", map);
+    public Menu getById(long id) {
+        return this.getSqlSession().selectOne("com.dao.impl.MenuDaoImpl.getById",id);
+    }
+
+    @Override
+    public List<Menu> getListByType(Menu m) {
+        return this.getSqlSession().selectList("com.dao.impl.MenuDaoImpl.getListByType", m);
     }
 }

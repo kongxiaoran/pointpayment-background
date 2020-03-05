@@ -23,7 +23,8 @@ public class HotelService {
     public Hotel getInfo(long id){
         Map<String,Object> map = new HashMap<>();
         map.put("id",id);
-        return hotelDao.getBy(map);
+        Hotel by = hotelDao.getBy(map);
+        return by;
     }
 
 }

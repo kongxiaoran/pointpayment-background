@@ -10,14 +10,14 @@
 
     <select id="getBy" parameterType="java.util.HashMap" resultType="Hotel">
         SELECT id,name,address,phone,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="hotel"/> s WHERE s.status != 9
-        <if test="id != null|| id=''">and s.id = #{id}</if>
+        <if test="id != null and id=''"> and s.id = #{id}</if>
     </select>
 
     <update id="update" parameterType="Hotel">
         UPDATE <include refid="hotel"/> s SET status = 1
-        <if test="name != null|| name=''">, s.name = #{name}</if>
-        <if test="address != null|| address=''">, s.address = #{address}</if>
+        <if test="name != null and name=''">, s.name = #{name}</if>
+        <if test="address != null and address=''">, s.address = #{address}</if>
         WHERE status != 9
-        <if test="id !=null|| id=''">and s.id = #{id}</if>
+        <if test="id !=null and id=''"> and s.id = #{id}</if>
     </update>
 </mapper>
