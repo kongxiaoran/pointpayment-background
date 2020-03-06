@@ -28,9 +28,19 @@ public class MenuController {
      * @return
      */
     @RequestMapping(value = "/listByType",method = RequestMethod.POST)
-    public List<Menu> listByType(@RequestBody  String type){
+    public List<Menu> getListByTypeName(@RequestBody  String type){
 
-        return menuService.getListBy(type);
+        return menuService.getListByTypeName(type);
+    }
+
+    /**
+     * 通过菜名模糊搜索菜品列表
+     * @param name
+     * @return
+     */
+    @RequestMapping(value = "/getByName",method = RequestMethod.POST)
+    public List<Menu> getListByName(@RequestBody String name){
+        return menuService.getListByName(name);
     }
 
     /**

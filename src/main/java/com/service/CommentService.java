@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.CommentDao;
 import com.entity.Comment;
+import com.entity.CommentPic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,5 +27,13 @@ public class CommentService {
             c.setPics(commentPic);
         }
         return comments;
+    }
+
+    public long insert(Comment comment) {
+        return commentDao.insert(comment);
+    }
+
+    public long insertPic(CommentPic commentPic){
+        return commentDao.insertPic(commentPic);
     }
 }

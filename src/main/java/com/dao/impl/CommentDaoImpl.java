@@ -2,6 +2,7 @@ package com.dao.impl;
 
 import com.dao.CommentDao;
 import com.entity.Comment;
+import com.entity.CommentPic;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -27,7 +28,7 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 
     @Override
     public long insert(Comment entity) {
-        return 0;
+        return this.getSqlSession().insert("com.dao.impl.CommentDaoImpl.insert",entity);
     }
 
     @Override
@@ -53,5 +54,10 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
     @Override
     public List<String> getCommentPic(long commentId) {
         return this.getSqlSession().selectList("com.dao.impl.CommentDaoImpl.getCommentPic",commentId);
+    }
+
+    @Override
+    public long insertPic(CommentPic commentPic) {
+        return this.getSqlSession().insert("com.dao.impl.CommentDaoImpl.insertPic",commentPic);
     }
 }

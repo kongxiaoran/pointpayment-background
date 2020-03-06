@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entity.Comment;
+import com.entity.CommentPic;
 
 import java.util.List;
 import java.util.Map;
@@ -18,4 +19,6 @@ public interface CommentDao {
     public List<Comment> list();
 
     public List<String> getCommentPic(long commentId);
+
+    public long insertPic(CommentPic commentPic);
 }

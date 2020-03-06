@@ -45,7 +45,7 @@ public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao{
     }
 
     @Override
-    public List<Menu> getListByType(Menu m) {
-        return this.getSqlSession().selectList("com.dao.impl.MenuDaoImpl.getListByType", m);
+    public List<Menu> getListBy(Menu m) {
+        return this.getSqlSession().selectList("com.dao.impl.MenuDaoImpl.getListBy", m);
     }
 }

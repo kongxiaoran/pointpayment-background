@@ -23,7 +23,7 @@ public class MenuService {
     @Autowired
     TypeDao typeDao;
 
-    public List<Menu> getListBy(String typeName){
+    public List<Menu> getListByTypeName(String typeName){
 
         Type type = new Type();
         type.setTypename(typeName);
@@ -31,7 +31,7 @@ public class MenuService {
 
         Menu menu = new Menu();
         menu.setTypeid(tp.getId());
-        List<Menu> menus = menuDao.getListByType(menu);
+        List<Menu> menus = menuDao.getListBy(menu);
         return menus;
     }
 
@@ -53,5 +53,12 @@ public class MenuService {
         menu.setStatus(9);
         menuDao.update(menu);
         return true;
+    }
+
+    public List<Menu> getListByName(String name) {
+        Menu menu = new Menu();
+        menu.setDishes(name);
+        List<Menu> menus = menuDao.getListBy(menu);
+        return menus;
     }
 }

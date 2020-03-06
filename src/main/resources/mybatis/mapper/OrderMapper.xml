@@ -26,10 +26,12 @@
 
     </select>
 
+    <!-- 每日账单查询 -->
     <select id="getListBy" parameterType="Order" resultType="Order">
         SELECT id,wxaccount,tablenumber,money,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="orders"/> o WHERE o.status!=9
         and date(o.createtime)= curdate()
         <if test="tablenumber!=null  and tablenumber!=''">and o.tablenumber = #{tablenumber}</if>
+        <if test="wxaccount!=null  and wxaccount!=''">and o.wxaccount = #{wxaccount}</if>
 
     </select>
 

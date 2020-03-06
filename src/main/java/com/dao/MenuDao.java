@@ -15,6 +15,7 @@ public interface MenuDao {
 
     public Menu getById(long id);
 
-    public List<Menu> getListByType(Menu menu);
+    public List<Menu> getListBy(Menu menu);
+
 
 }

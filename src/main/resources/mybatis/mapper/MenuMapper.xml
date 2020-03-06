@@ -20,12 +20,9 @@
 
     <select id="getBy" parameterType="Menu" resultType="Menu">
         SELECT id,dishes,price,picture,typeid,hid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="menu"/> s WHERE s.status!=9
-        <if test="dishes!=null and dishes!=''">and s.dishes=#{dishes}</if>
-        <if test="price!=null and price!=''">and s.price=#{price}</if>
-        <if test="picture!=null and picture!=''">and s.picture=#{picture}</if>
+        <if test="dishes!=null and dishes!=''">and s.dishes like CONCAT(CONCAT('%', #{dishes}), '%')</if>
         <if test="typeid!=null and typeid!=''">and s.typeid=#{typeid}</if>
-        <if test="hid!=null and hid!=''">and s.hid=#{hid}</if>
-        <if test="status!=null and status!=''">and s.status=#{status}</if>
+
     </select>
 
     <select id="getById" parameterType="long" resultType="Menu">
@@ -34,9 +31,10 @@
     </select>
 
 
-    <select id="getListByType" parameterType="Menu" resultType="Menu">
+    <select id="getListBy" parameterType="Menu" resultType="Menu">
         SELECT id,dishes,price,picture,typeid,hid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="menu"/> s WHERE s.status!=9
         <if test="typeid!=null and typeid!=''">and s.typeid=#{typeid}</if>
+        <if test="dishes!=null and dishes!=''">and s.dishes like CONCAT(CONCAT('%', #{dishes}), '%')</if>
     </select>
 
 </mapper>
