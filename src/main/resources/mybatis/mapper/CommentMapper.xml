@@ -6,8 +6,8 @@
     <sql id="comment_pic">comment_pic</sql>
 
 
-    <insert id="insert" parameterType="Comment" keyProperty="id"  useGeneratedKeys="true">
-        INSERT INTO <include refid="comment"/> (wxaccount,hid,dishes,marks,comment,status) values(#{wxaccount},#{hid},#{dishes},#{marks},#{comment},#{status})
+    <insert id="insert" parameterType="Comment" keyProperty="id"  useGeneratedKeys="true" keyColumn="id">
+        INSERT INTO <include refid="comment"/> (wxaccount,hid,dishes,marks,comment) values(#{wxaccount},#{hid},#{dishes},#{marks},#{comment})
     </insert>
 
     <insert id="insertPic" parameterType="CommentPic" keyProperty="id" useGeneratedKeys="true">

@@ -17,14 +17,14 @@ import java.util.UUID;
 @Component(value = "fileService")
 public class FileService {
 
-    public List<String> uploadFile(MultipartFile[] files){
+    public List<String> uploadFile(MultipartFile[] files,String path){
 
         List<String> list = new ArrayList<>();
 
         for(MultipartFile multipartFile:files){
             String name = UUID.randomUUID().toString().replace("-", "")+
                     multipartFile.getOriginalFilename();
-            String filePath = "/www/server/tomcat/webapps/pointpayment/commentPic/"+ name;
+            String filePath = "/www/server/tomcat/webapps/pointpayment/"+path+"/"+ name;
 
             File desFile = new File(filePath);
             if(!desFile.getParentFile().exists()){
@@ -37,7 +37,7 @@ public class FileService {
                 e.printStackTrace();
                 return null;
             }
-            list.add("http://101.133.228.179:8080/pointpayment/pic/"+ name);
+            list.add("http://101.133.228.179:8080/pointpayment/"+path+"/"+ name);
         }
         return list;
     }

@@ -11,28 +11,13 @@ public class Menu {
     private String dishes;
     private Double price;
     private String picture;
-    private long typeid;
+    private long typeId;
+    private String typeName;
     private String createtime;
     private Integer status;
 
     private boolean active = false;
     private Integer num =1;
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
 
     public long getId() {
         return id;
@@ -74,12 +59,20 @@ public class Menu {
         this.picture = picture;
     }
 
-    public long getTypeid() {
-        return typeid;
+    public long getTypeId() {
+        return typeId;
     }
 
-    public void setTypeid(long typeid) {
-        this.typeid = typeid;
+    public void setTypeId(long typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     public String getCreatetime() {
@@ -96,5 +89,21 @@ public class Menu {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
     }
 }

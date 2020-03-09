@@ -17,5 +17,4 @@ public interface MenuDao {
 
     public List<Menu> getListBy(Menu menu);
 
-
 }

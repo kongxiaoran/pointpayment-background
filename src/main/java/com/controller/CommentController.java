@@ -8,7 +8,6 @@ import com.service.FileService;
 import com.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class CommentController {
      * @return
      */
     @RequestMapping(value = "/vertify",method = RequestMethod.POST)
-    public boolean vertify(String wxaccount){
+    public boolean vertify(@RequestBody String wxaccount){
         Order order = new Order();
         order.setWxaccount(wxaccount);
         List<Order> orders = orderService.getListBy(order);
@@ -54,33 +53,22 @@ public class CommentController {
         return true;
     }
 
+
+
+//    @RequestParam("files")MultipartFile[] files,
+//    @RequestParam("wxaccount") String wxaccount,@RequestParam("dishes") String dishes,
+//    @RequestParam("marks") Float marks,@RequestParam("comment")String commen,@RequestParam("hid")Integer hid
+
     /**
-     * 提交评论
      *
-     * @param files
-     * @param wxaccount
-     * @param dishes
-     * @param marks
-     * @param commen
-     * @param hid
+     * @param comment
      * @return
      */
     @RequestMapping(value = "/submit",method = RequestMethod.POST)
-    public boolean submit(@RequestParam("files")MultipartFile[] files,
-                          @RequestParam("wxaccount") String wxaccount,@RequestParam("dishes") String dishes,
-                          @RequestParam("marks") Float marks,@RequestParam("comment")String commen,@RequestParam("hid")Integer hid){
+    public boolean submit(@RequestBody Comment comment){
 
-        Comment comment = new Comment();
-        comment.setWxaccount(wxaccount);
-        comment.setComment(commen);
-        comment.setDishes(dishes);
-        comment.setMarks(marks);
-        comment.setHid(hid);
-
-        //完成图片的上传
-        comment.setPics(fileService.uploadFile(files));
-
-        long id = commentService.insert(comment);
+        commentService.insert(comment);
+        long id = comment.getId();
         List<String> pics = comment.getPics();
         for(String pic : pics){
             CommentPic commentPic = new CommentPic();

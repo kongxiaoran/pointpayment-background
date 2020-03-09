@@ -4,25 +4,24 @@
 
     <sql id="type">type</sql>
 
-    <insert id="insert" parameterType="com.entity.Type" keyProperty="id"  useGeneratedKeys="true">
-        INSERT INTO <include refid="type"/> (typename,quantity,status) values(#{typename},#{quantity},#{status})
+    <insert id="insert" parameterType="Type" keyProperty="id"  useGeneratedKeys="true">
+        INSERT INTO <include refid="type"/> (typename) values(#{typeName})
     </insert>
 
-    <update id="update" parameterType="long" keyProperty="id"  useGeneratedKeys="true">
-        update <include refid="type" /> s set status=1
-         <if test="typename!=null  and typename==''">,s.typename=#{typename}</if>
-         <if test="quantity!=null  and quantity==''">,s.quantity=#{quantity}</if>
-         <if test="status != null">,s.status = #{status}</if>
-         WHERE status != 9 and s.id=#{id}
+    <update id="update" parameterType="Type">
+        update <include refid="type" /> set status = 1
+         <if test="typeName != null  and typeName !=''">,typename=#{typeName}</if>
+         <if test="status != null  and status !=''">,status = #{status}</if>
+         WHERE status != 9 and id=#{id}
     </update>
 
     <select id="getBy" parameterType="Type" resultType="Type">
-        SELECT * FROM <include refid="type"/> s WHERE s.status != 9
-        <if test="typename != null  and typename!=''">and s.typename=#{typename}</if>
+        SELECT * FROM <include refid="type"/> t WHERE t.status != 9
+        <if test="typeName != null  and typeName!=''">and t.typename=#{typeName}</if>
     </select>
 
     <select id="getList" parameterType="Type" resultType="Type">
-        SELECT * FROM <include refid="type"/> s WHERE s.status != 9
+        SELECT * FROM <include refid="type"/> t WHERE t.status != 9
     </select>
 
 </mapper>

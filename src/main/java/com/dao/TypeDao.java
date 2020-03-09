@@ -10,7 +10,7 @@ public interface TypeDao {
 
     public long update(Type entity);
 
-    public Type getBy(Type type);
+    public Type getBy(Type v);
 
     public List<Type> getList();
 

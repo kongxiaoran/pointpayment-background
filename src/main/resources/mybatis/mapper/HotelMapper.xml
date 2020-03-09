@@ -9,15 +9,19 @@
     </insert>
 
     <select id="getBy" parameterType="java.util.HashMap" resultType="Hotel">
-        SELECT id,name,address,phone,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="hotel"/> s WHERE s.status != 9
-        <if test="id != null and id=''"> and s.id = #{id}</if>
+        SELECT * FROM <include refid="hotel"/> s WHERE s.status != 9
+        <if test="id != null and id !=''"> and s.id = #{id}</if>
     </select>
 
     <update id="update" parameterType="Hotel">
-        UPDATE <include refid="hotel"/> s SET status = 1
-        <if test="name != null and name=''">, s.name = #{name}</if>
-        <if test="address != null and address=''">, s.address = #{address}</if>
-        WHERE status != 9
-        <if test="id !=null and id=''"> and s.id = #{id}</if>
+        UPDATE <include refid="hotel"/> h SET status = 1
+        <if test="name != null and name!=''">,h.name = #{name}</if>
+        <if test="address != null and address!=''">,h.address = #{address}</if>
+        <if test="pic != null and pic!=''">,h.pic = #{pic}</if>
+        <if test="phone != null and phone!=''">,h.phone = #{phone}</if>
+        <if test="info != null and info!=''">,h.info = #{info}</if>
+        <if test="time != null and phone!=''">,h.time = #{time}</if>
+        <if test="status!=null and status!=''">,h.status = #{status}</if>
+        WHERE status != 9 and h.id = #{id}
     </update>
 </mapper>

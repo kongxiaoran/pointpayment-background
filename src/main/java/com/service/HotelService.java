@@ -27,4 +27,7 @@ public class HotelService {
         return by;
     }
 
+    public long update(Hotel hotel) {
+        return hotelDao.update(hotel);
+    }
 }

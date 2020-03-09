@@ -8,7 +8,11 @@ package com.entity;
 public class Hotel {
     private Long id;
     private String name;
+    private String pic;
     private String address;
+    private String phone;
+    private String info;
+    private String time;
     private String createtime;
     private Integer status;
 
@@ -28,12 +32,44 @@ public class Hotel {
         this.name = name;
     }
 
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getCreatetime() {

@@ -22,14 +22,15 @@ public class MenuController {
     @Autowired
     MenuService menuService;
 
+
     /**
      * 通过菜类别名展示菜品列表
+     * 如果类别名为 "" ，则默认展示所有类别的菜品
      * @param type
      * @return
      */
     @RequestMapping(value = "/listByType",method = RequestMethod.POST)
-    public List<Menu> getListByTypeName(@RequestBody  String type){
-
+    public List<Menu> getListByTypeName(@RequestParam(value = "type") String type){
         return menuService.getListByTypeName(type);
     }
 
@@ -39,7 +40,7 @@ public class MenuController {
      * @return
      */
     @RequestMapping(value = "/getByName",method = RequestMethod.POST)
-    public List<Menu> getListByName(@RequestBody String name){
+    public List<Menu> getListByName(@RequestParam("name") String name){
         return menuService.getListByName(name);
     }
 
@@ -49,7 +50,7 @@ public class MenuController {
      * @return
      */
     @RequestMapping(value = "/getById",method = RequestMethod.POST)
-    public Menu getById(@RequestBody long id){
+    public Menu getById(@RequestParam("id") long id){
         return menuService.getById(id);
     }
 
@@ -79,7 +80,7 @@ public class MenuController {
      * @return
      */
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
-    public boolean delete(@RequestBody long id){
+    public boolean delete(@RequestParam("id") long id){
         return menuService.delete(id);
     }
 }

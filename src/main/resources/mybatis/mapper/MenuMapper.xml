@@ -3,9 +3,10 @@
 <mapper namespace="com.dao.impl.MenuDaoImpl">
 
     <sql id="menu">menu</sql>
+    <sql id="type">type</sql>
 
     <insert id="insert" parameterType="Menu" keyProperty="id"  useGeneratedKeys="true">
-        INSERT INTO <include refid="menu"/> (dishes,price,picture,typeid,hid,status) values(#{dishes},#{price},#{picture},#{typeid},#{hid},#{status})
+        INSERT INTO <include refid="menu"/> (dishes,price,picture,typeid) values(#{dishes},#{price},#{picture},#{typeId})
     </insert>
 
     <update id="update" parameterType="Menu">
@@ -13,28 +14,30 @@
         <if test="dishes != null and dishes!=''">,dishes=#{dishes}</if>
         <if test="price != null and price!=''">,price=#{price}</if>
         <if test="picture != null and picture!=''">,picture=#{picture}</if>
-        <if test="typeid != null and typeid!=''">,typeid=#{typeid}</if>
+        <if test="typeId != null and typeId!=''">,typeid=#{typeId}</if>
         <if test="status != null and status!=''">,status=#{status}</if>
         where status!=9 and id=#{id}
     </update>
 
     <select id="getBy" parameterType="Menu" resultType="Menu">
-        SELECT id,dishes,price,picture,typeid,hid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="menu"/> s WHERE s.status!=9
+        SELECT id,dishes,price,picture,typeid as typeId,hid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="menu"/> s WHERE s.status!=9
         <if test="dishes!=null and dishes!=''">and s.dishes like CONCAT(CONCAT('%', #{dishes}), '%')</if>
-        <if test="typeid!=null and typeid!=''">and s.typeid=#{typeid}</if>
+        <if test="typeId!=null and typeId!=''">and s.typeid=#{typeId}</if>
 
     </select>
 
     <select id="getById" parameterType="long" resultType="Menu">
-        SELECT id,dishes,price,picture,typeid,hid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="menu"/> m WHERE m.status!=9
-        AND m.id = #{id}
+        SELECT m.id,m.dishes,m.price,m.picture,m.typeid as typeId,m.hid,m.status,DATE_FORMAT(m.createtime,"%Y-%m-%d %H:%m") as createtime,t.typename as typeName
+        FROM <include refid="menu"/> m, <include refid="type"/> t WHERE m.status!=9 and t.id = m.typeid and m.id = #{id}
     </select>
 
 
     <select id="getListBy" parameterType="Menu" resultType="Menu">
-        SELECT id,dishes,price,picture,typeid,hid,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="menu"/> s WHERE s.status!=9
-        <if test="typeid!=null and typeid!=''">and s.typeid=#{typeid}</if>
-        <if test="dishes!=null and dishes!=''">and s.dishes like CONCAT(CONCAT('%', #{dishes}), '%')</if>
+        SELECT m.id,m.dishes,m.price,m.picture,m.typeid as typeId ,m.hid,m.status,DATE_FORMAT(m.createtime,"%Y-%m-%d %H:%m") as createtime,t.typename as typeName
+        FROM <include refid="menu"/> m, <include refid="type"/> t WHERE m.status!=9 and t.id = m.typeid
+        <if test="typeId!=null and typeId!=''">and m.typeid=#{typeId}</if>
+        <if test="typeName!=null and typeName!=''">and t.typename=#{typeName}</if>
+        <if test="dishes!=null and dishes!=''">and m.dishes like CONCAT(CONCAT('%', #{dishes}), '%')</if>
     </select>
 
 </mapper>

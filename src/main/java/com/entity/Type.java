@@ -7,7 +7,7 @@ package com.entity;
  */
 public class Type {
     private long id;
-    private String typename;
+    private String typeName;
     private Integer quantity;
     private String createtime;
     private Integer status;
@@ -20,12 +20,12 @@ public class Type {
         this.id = id;
     }
 
-    public String getTypename() {
-        return typename;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setTypename(String typename) {
-        this.typename = typename;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     public Integer getQuantity() {

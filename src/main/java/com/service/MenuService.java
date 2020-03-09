@@ -3,7 +3,6 @@ package com.service;
 import com.dao.MenuDao;
 import com.dao.TypeDao;
 import com.entity.Menu;
-import com.entity.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,12 +24,13 @@ public class MenuService {
 
     public List<Menu> getListByTypeName(String typeName){
 
-        Type type = new Type();
-        type.setTypename(typeName);
-        Type tp = typeDao.getBy(type);
+//        Type type = new Type();
+//        type.setTypename(typeName);
+//        Type tp = typeDao.getBy(type);
 
         Menu menu = new Menu();
-        menu.setTypeid(tp.getId());
+//        menu.setTypeId(tp.getId());
+        menu.setTypeName(typeName);
         List<Menu> menus = menuDao.getListBy(menu);
         return menus;
     }
@@ -60,5 +60,10 @@ public class MenuService {
         menu.setDishes(name);
         List<Menu> menus = menuDao.getListBy(menu);
         return menus;
+    }
+
+    public List<Menu> list() {
+        Menu menu = new Menu();
+        return menuDao.getListBy(menu);
     }
 }

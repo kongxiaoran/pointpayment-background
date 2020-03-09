@@ -26,7 +26,23 @@ public class TypeService {
     public Type getByName(String typeName){
 
         Type type = new Type();
-        type.setTypename(typeName);
+        type.setTypeName(typeName);
         return typeDao.getBy(type);
+    }
+
+    public boolean delete(long id) {
+        Type type = new Type();
+        type.setId(id);
+        type.setStatus(9);
+        typeDao.update(type);
+        return true;
+    }
+
+    public long insert(Type type) {
+        return typeDao.insert(type);
+    }
+
+    public long update(Type type) {
+        return typeDao.update(type);
     }
 }

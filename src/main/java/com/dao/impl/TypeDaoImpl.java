@@ -26,7 +26,7 @@ public class TypeDaoImpl extends SqlSessionDaoSupport implements TypeDao{
 
     @Override
     public long insert(Type entity) {
-        return 0;
+        return this.getSqlSession().insert("com.dao.impl.TypeDaoImpl.insert",entity);
     }
 
     @Override

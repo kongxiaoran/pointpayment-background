@@ -48,4 +48,6 @@ public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao{
     public List<Menu> getListBy(Menu m) {
         return this.getSqlSession().selectList("com.dao.impl.MenuDaoImpl.getListBy", m);
     }
+
+
 }
