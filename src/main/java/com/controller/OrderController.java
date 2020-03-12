@@ -46,17 +46,32 @@ public class OrderController {
      * @param entity
      * @return
      */
-    @RequestMapping(value = "submitOrder",method = RequestMethod.POST)
+    @RequestMapping(value = "/submitOrder",method = RequestMethod.POST)
     public boolean submitOrder(@RequestBody Order entity){
 
         orderService.insert(entity);
         long id = entity.getId();
 
         List<Cart> carts = entity.getCarts();
+
         for(Cart cart : carts){
             cart.setOrderid(id);
             cartService.insert(cart);
         }
+        return true;
+    }
+
+    /**
+     * 处理订单
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/handleOrder",method = RequestMethod.POST)
+    public boolean handleOrder(@RequestParam(value = "id") long id){
+        Order order = new Order();
+        order.setId(id);
+        order.setStatus(2);
+        orderService.update(order);
         return true;
     }
 

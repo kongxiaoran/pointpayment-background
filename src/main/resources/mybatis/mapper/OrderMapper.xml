@@ -5,11 +5,11 @@
     <sql id="orders">orders</sql>
 
     <insert id="insert" parameterType="Order" keyProperty="id"  useGeneratedKeys="true">
-        INSERT INTO <include refid="orders"/> (wxaccount,tablenumber,money) values(#{wxaccount},#{tablenumber},#{money})
+        INSERT INTO <include refid="orders"/> (wxaccount,openid,tablenumber,money) values(#{wxaccount},#{openId},#{tablenumber},#{money})
     </insert>
 
-    <update id="update" parameterType="Order" keyProperty="id"  useGeneratedKeys="true">
-        update <include refid="orders" /> s set s.status=1
+    <update id="update" parameterType="Order">
+        update <include refid="orders" /> s set s.status = 1
         <if test="wxaccount!=null  and wxaccount!=''">,s.wxaccount=#{wxaccount}</if>
         <if test="tablenumber!=null  and tablenumber!=''">,s.tablenumber=#{tablenumber}</if>
         <if test="money!=null  and money!=''">,s.money=#{money}</if>
@@ -20,6 +20,7 @@
 
     <select id="getBy" parameterType="long" resultType="Order">
         SELECT id,wxaccount,tablenumber,money,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="orders"/> o WHERE o.status!=9
+        <if test="wxaccount!=null and wxaccount!=''">and o.wxaccount=#{wxaccount}</if>
         <if test="tablenumber!=null  and tablenumber!=''">and o.tablenumber=#{tablenumber}</if>
         <if test="createtime!=null  and createtime!=''">and o.createtime=#{createtime}</if>
         <if test="status!=null  and status!=''">and o.status=#{status}</if>
@@ -28,11 +29,11 @@
 
     <!-- 每日账单查询 -->
     <select id="getListBy" parameterType="Order" resultType="Order">
-        SELECT id,wxaccount,tablenumber,money,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="orders"/> o WHERE o.status!=9
+        SELECT id,openid as openId ,wxaccount,tablenumber,money,status,DATE_FORMAT(createtime,"%Y-%m-%d %H:%m") as createtime FROM <include refid="orders"/> o WHERE o.status!=9
         and date(o.createtime)= curdate()
         <if test="tablenumber!=null  and tablenumber!=''">and o.tablenumber = #{tablenumber}</if>
-        <if test="wxaccount!=null  and wxaccount!=''">and o.wxaccount = #{wxaccount}</if>
-
+        <if test="wxaccount!=null  and wxaccount!=''">and o.wxaccount like CONCAT(CONCAT('%', #{wxaccount}), '%')</if>
+        <if test="openId!=null and openId!=''">and o.openid = #{openId}</if>
     </select>
 
 </mapper>

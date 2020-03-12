@@ -10,6 +10,7 @@ import java.util.List;
 public class Comment {
     private Long id;
     private String wxaccount;
+    private String openId;
     private Integer hid;
     private String dishes;
     private Float marks;
@@ -18,6 +19,14 @@ public class Comment {
     private Integer status;
 
     private List<String> pics;
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
 
     public List<String> getPics() {
         return pics;

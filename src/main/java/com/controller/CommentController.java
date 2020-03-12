@@ -39,13 +39,13 @@ public class CommentController {
 
     /**
      * 验证该用户是否有评论权限
-     * @param wxaccount
+     * @param openId
      * @return
      */
     @RequestMapping(value = "/vertify",method = RequestMethod.POST)
-    public boolean vertify(@RequestBody String wxaccount){
+    public boolean vertify(@RequestBody String openId){
         Order order = new Order();
-        order.setWxaccount(wxaccount);
+        order.setOpenId(openId);
         List<Order> orders = orderService.getListBy(order);
         if(orders.size()==0){
             return false;

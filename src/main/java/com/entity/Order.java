@@ -11,20 +11,13 @@ public class Order {
 
     private Long id;
     private String wxaccount;
+    private String openId;
     private Integer tablenumber;
     private Double money;
     private String createtime;
     private Integer status;
 
     private List<Cart> carts;
-
-    public List<Cart> getCarts() {
-        return carts;
-    }
-
-    public void setCarts(List<Cart> carts) {
-        this.carts = carts;
-    }
 
     public Long getId() {
         return id;
@@ -40,6 +33,14 @@ public class Order {
 
     public void setWxaccount(String wxaccount) {
         this.wxaccount = wxaccount;
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
     public Integer getTablenumber() {
@@ -72,5 +73,13 @@ public class Order {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public List<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<Cart> carts) {
+        this.carts = carts;
     }
 }

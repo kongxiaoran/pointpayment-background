@@ -31,7 +31,7 @@ public class CartDaoImpl extends SqlSessionDaoSupport implements CartDao {
 
     @Override
     public long insert(Cart entity) {
-        return 0;
+        return this.getSqlSession().update("com.dao.impl.CartDaoImpl.insert",entity);
     }
 
     @Override

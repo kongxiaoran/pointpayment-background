@@ -30,8 +30,12 @@ public class MenuController {
      * @return
      */
     @RequestMapping(value = "/listByType",method = RequestMethod.POST)
-    public List<Menu> getListByTypeName(@RequestParam(value = "type") String type){
+    public List<Menu> getListByTypeName(@RequestParam(value = "type") String type,@RequestParam(value = "status",required = false) Integer  status){
+        if(status != null){
+            return menuService.getListByTypeNameAndStatus(type,status);
+        }
         return menuService.getListByTypeName(type);
+
     }
 
     /**

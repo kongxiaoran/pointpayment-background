@@ -25,6 +25,9 @@ public class FileController {
     private String rpath = "/www/server/tomcat/webapps/pointpayment/";
     private String wpath = "D:\\小猪猪\\root";
 
+    //项目的url地址
+    private String url = "https://hfuu.top/pointpayment/";
+
 
     /**
      * 接收图片
@@ -41,7 +44,7 @@ public class FileController {
                     multipartFile.getOriginalFilename();
 
 
-            File desFile = new File(wpath+path+"/"+name);
+            File desFile = new File(rpath+path+"/"+name);
             if(!desFile.getParentFile().exists()){
                 desFile.getParentFile().mkdirs();
             }
@@ -52,7 +55,7 @@ public class FileController {
                 e.printStackTrace();
                 return null;
             }
-            list.add("http://101.133.228.179:8080/pointpayment/"+path+"/"+ name);
+            list.add(url+path+"/"+ name);
         }
         return list;
     }

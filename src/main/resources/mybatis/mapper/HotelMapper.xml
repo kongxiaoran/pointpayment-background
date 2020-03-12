@@ -5,7 +5,7 @@
     <sql id="hotel">hotel</sql>
 
     <insert id="insert" parameterType="Hotel" keyProperty="id"  useGeneratedKeys="true">
-        INSERT INTO <include refid="hotel"/> (name,address,createtime,status) values(#{name},#{address},#{createtime},#{status})
+        INSERT INTO <include refid="hotel"/> (name,pic,address,phone,info,time) values(#{name},#{pic},#{address},#{phone},#{info},#{time})
     </insert>
 
     <select id="getBy" parameterType="java.util.HashMap" resultType="Hotel">

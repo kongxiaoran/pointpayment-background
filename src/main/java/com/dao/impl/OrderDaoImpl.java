@@ -26,7 +26,7 @@ public class OrderDaoImpl extends SqlSessionDaoSupport implements OrderDao{
 
     @Override
     public long insert(Order entity) {
-        return 0;
+        return this.getSqlSession().update("com.dao.impl.OrderDaoImpl.insert",entity);
     }
 
     @Override

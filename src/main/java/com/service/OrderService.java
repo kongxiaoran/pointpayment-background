@@ -26,5 +26,9 @@ public class OrderService {
         return orderDao.insert(order);
     }
 
+    public long update(Order order){
+        return orderDao.update(order);
+    }
+
 
 }

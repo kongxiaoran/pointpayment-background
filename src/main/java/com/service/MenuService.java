@@ -24,12 +24,8 @@ public class MenuService {
 
     public List<Menu> getListByTypeName(String typeName){
 
-//        Type type = new Type();
-//        type.setTypename(typeName);
-//        Type tp = typeDao.getBy(type);
 
         Menu menu = new Menu();
-//        menu.setTypeId(tp.getId());
         menu.setTypeName(typeName);
         List<Menu> menus = menuDao.getListBy(menu);
         return menus;
@@ -65,5 +61,13 @@ public class MenuService {
     public List<Menu> list() {
         Menu menu = new Menu();
         return menuDao.getListBy(menu);
+    }
+
+    public List<Menu> getListByTypeNameAndStatus(String typeName, int status) {
+        Menu menu = new Menu();
+        menu.setTypeName(typeName);
+        menu.setStatus(status);
+        List<Menu> menus = menuDao.getListBy(menu);
+        return menus;
     }
 }

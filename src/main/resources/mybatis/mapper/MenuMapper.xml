@@ -38,6 +38,7 @@
         <if test="typeId!=null and typeId!=''">and m.typeid=#{typeId}</if>
         <if test="typeName!=null and typeName!=''">and t.typename=#{typeName}</if>
         <if test="dishes!=null and dishes!=''">and m.dishes like CONCAT(CONCAT('%', #{dishes}), '%')</if>
+        <if test="status!=null and status!=''">and m.status = #{status}</if>
     </select>
 
 </mapper>

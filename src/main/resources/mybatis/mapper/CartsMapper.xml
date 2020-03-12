@@ -5,7 +5,7 @@
     <sql id="cart">cart</sql>
 
     <insert id="insert" parameterType="Cart" keyProperty="id"  useGeneratedKeys="true">
-        INSERT INTO <include refid="cart"/> (mid,dishes,price,quantity,orderid,status) values(#{mid},#{dishes},#{price},#{quantity},#{orderid},#{status})
+        INSERT INTO <include refid="cart"/> (mid,dishes,price,quantity,orderid) values(#{mid},#{dishes},#{price},#{quantity},#{orderid})
     </insert>
 
     <select id="getBy" parameterType="Cart" resultType="Cart">
