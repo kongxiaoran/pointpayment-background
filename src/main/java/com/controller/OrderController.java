@@ -48,7 +48,7 @@ public class OrderController {
      */
     @RequestMapping(value = "/submitOrder",method = RequestMethod.POST)
     public boolean submitOrder(@RequestBody Order entity){
-
+        System.out.println(entity.toString());
         orderService.insert(entity);
         long id = entity.getId();
 

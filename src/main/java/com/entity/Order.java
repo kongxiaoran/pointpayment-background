@@ -82,4 +82,18 @@ public class Order {
     public void setCarts(List<Cart> carts) {
         this.carts = carts;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", wxaccount='" + wxaccount + '\'' +
+                ", openId='" + openId + '\'' +
+                ", tablenumber=" + tablenumber +
+                ", money=" + money +
+                ", createtime='" + createtime + '\'' +
+                ", status=" + status +
+                ", carts=" + carts +
+                '}';
+    }
 }
